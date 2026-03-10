@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | 어현우</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-secondary: #4a4a4a;
+            --color-text-muted: #777777;
+            --color-accent: #2563eb;
+            --color-border: #e0e0e0;
+            --color-border-light: #f0f0f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .portfolio {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 80px;
+            background: white;
+        }
+
+        @media print {
+            body { background: white; }
+            .portfolio { padding: 0; max-width: 100%; }
+            @page { size: A4; margin: 15mm; }
+            .project-section { break-before: page; }
+            .intro-nav { display: none; }
+        }
+
+        /* ===== Intro Section ===== */
+        .intro {
+            padding-bottom: 36px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--color-text);
+        }
+
+        .intro-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .intro-header-left {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .intro-photo {
+            width: 90px;
+            height: 120px;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .intro-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .intro-name {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+        }
+
+        .intro-title {
+            font-size: 15px;
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .intro-contact {
+            font-size: 12px;
+            color: var(--color-text-muted);
+            line-height: 1.8;
+        }
+
+        .intro-contact a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+        }
+
+        .intro-contact a:hover {
+            color: var(--color-accent);
+        }
+
+        .intro-header-right {
+            text-align: right;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        .intro-header-right a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+        }
+
+        .intro-header-right a:hover {
+            color: var(--color-accent);
+        }
+
+        .intro-about {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .intro-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .intro-info-item {
+            padding: 10px 14px;
+            border: 1px solid var(--color-border-light);
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .intro-info-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .intro-info-value {
+            font-size: 13px;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .intro-info-sub {
+            font-size: 11px;
+            color: var(--color-text-muted);
+            margin-top: 2px;
+        }
+
+        .intro-skills {
+            margin-bottom: 20px;
+        }
+
+        .intro-skills-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 8px;
+        }
+
+        .intro-skill-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding: 5px 0;
+        }
+
+        .intro-skill-row + .intro-skill-row {
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .intro-skill-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            min-width: 60px;
+        }
+
+        .intro-skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .intro-skill-tags span {
+            font-size: 11px;
+            padding: 2px 8px;
+            background: #f5f5f5;
+            border: 1px solid var(--color-border);
+            border-radius: 3px;
+            color: var(--color-text-secondary);
+        }
+
+        .intro-projects-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 10px;
+        }
+
+        .intro-project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .intro-project {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 12px 14px;
+            border: 1px solid var(--color-border-light);
+            border-radius: 6px;
+            background: #fafafa;
+        }
+
+        .intro-project-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .intro-project-desc {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .intro-project-meta {
+            text-align: right;
+            font-size: 11px;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+        }
+
+        .intro-project-tags {
+            display: flex;
+            gap: 4px;
+            margin-top: 4px;
+            justify-content: flex-end;
+        }
+
+        .intro-project-tags span {
+            font-size: 10px;
+            padding: 1px 6px;
+            border-radius: 3px;
+        }
+
+        .intro-project.cf .intro-project-tags span {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+        }
+
+        .intro-project.mm .intro-project-tags span {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+        }
+
+        /* ===== Port Intro ===== */
+        .port-intro {
+            margin-bottom: 32px;
+        }
+
+        .port-intro-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .port-intro-name {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .port-intro-role {
+            font-size: 14px;
+            color: var(--color-accent);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .port-intro-contact {
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .port-intro-contact a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+        }
+
+        .port-intro-contact a:hover {
+            color: var(--color-accent);
+        }
+
+        .port-intro-projects {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .port-intro-project {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        .port-intro-project-name {
+            font-weight: 700;
+            color: var(--color-text);
+            white-space: nowrap;
+        }
+
+        .port-intro-project-desc {
+            color: var(--color-text-secondary);
+        }
+
+        /* ===== Project Divider ===== */
+        .project-divider {
+            margin: 48px 0;
+            border: none;
+            border-top: 2px solid var(--color-text);
+        }
+
+        /* ===== Project Header ===== */
+        .port-header {
+            padding-bottom: 24px;
+            margin-bottom: 28px;
+        }
+
+        .port-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .port-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .port-header .subtitle {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .port-header-links {
+            text-align: right;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .port-header-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .port-header-links a:hover { text-decoration: underline; }
+
+        .port-header-links .service-link {
+            display: inline-block;
+            font-size: 13px;
+            color: #15803d;
+            text-decoration: none;
+            font-weight: 600;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 2px 12px;
+            border-radius: 20px;
+        }
+
+        .port-header-links .service-link:hover {
+            background: #dcfce7;
+            text-decoration: none;
+        }
+
+        .port-screenshot {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .port-screenshot img { width: 100%; display: block; }
+
+        /* ===== Section ===== */
+        .section { margin-bottom: 28px; }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        /* ===== Project Info ===== */
+        .info-line {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            display: flex;
+            gap: 20px;
+        }
+
+        .info-line span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-line strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        /* ===== Tech Stack ===== */
+        .tech-group {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 8px 0;
+        }
+
+        .tech-group + .tech-group { border-top: 1px solid var(--color-border-light); }
+
+        .tech-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text);
+            min-width: 70px;
+        }
+
+        .tech-items { display: flex; flex-wrap: wrap; gap: 6px; }
+
+        .tech-items span {
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        /* CodeFill theme */
+        .codefill .port-summary {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            padding: 12px 14px;
+            border-radius: 6px;
+            border-left: 3px solid #22c55e;
+            background: #f0fdf4;
+        }
+
+        .codefill .tech-items span {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+        }
+
+        .codefill .feature-table th {
+            color: #065f46;
+            background: #ecfdf5;
+        }
+
+        .codefill .role-card {
+            border: 1px solid #a7f3d0;
+            background: #fafffe;
+        }
+
+        .codefill .role-card-title {
+            color: var(--color-text);
+        }
+
+        .codefill .role-card-title::before {
+            background: #16a34a;
+        }
+
+        .codefill .trouble-title .num {
+            color: #22c55e;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .codefill .trouble-step:last-child .trouble-step-label {
+            color: #16a34a;
+        }
+
+        /* MeetingMap theme */
+        .meetingmap .port-summary {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            padding: 12px 14px;
+            border-radius: 6px;
+            border-left: 3px solid #f59e0b;
+            background: #fff8f0;
+        }
+
+        .meetingmap .tech-items span {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+        }
+
+        .meetingmap .feature-table th {
+            color: #7c2d12;
+            background: #fff7ed;
+        }
+
+        .meetingmap .role-card {
+            border: 1px solid #fed7aa;
+            background: #fffcf9;
+        }
+
+        .meetingmap .role-card-title {
+            color: #7c2d12;
+        }
+
+        .meetingmap .role-card-title::before {
+            background: #ea580c;
+        }
+
+        .meetingmap .trouble-title .num {
+            color: #ea580c;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+        }
+
+        .meetingmap .trouble-step:last-child .trouble-step-label {
+            color: #ea580c;
+        }
+
+        /* ===== Architecture ===== */
+        .architecture-img { text-align: center; }
+
+        .architecture-img img {
+            max-width: 100%;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+        }
+
+        /* ===== Feature Table ===== */
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--color-border);
+        }
+
+        .feature-table th,
+        .feature-table td {
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 13px;
+            border: 1px solid var(--color-border);
+            vertical-align: top;
+        }
+
+        .feature-table th {
+            font-weight: 600;
+            white-space: nowrap;
+            width: 130px;
+        }
+
+        .feature-table td {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== My Role ===== */
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .role-card { padding: 14px 16px; border-radius: 6px; }
+
+        .role-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .role-card-title::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            border-radius: 2px;
+        }
+
+        .role-card ul {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            padding-left: 14px;
+            line-height: 1.7;
+        }
+
+        .role-card li { margin-bottom: 2px; }
+
+        /* ===== Troubleshooting ===== */
+        .trouble-item { margin-bottom: 24px; }
+        .trouble-item:last-child { margin-bottom: 0; }
+
+        .trouble-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trouble-title .num {
+            font-size: 12px;
+            font-weight: 800;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trouble-flow {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+        }
+
+        .trouble-step {
+            padding: 14px 16px;
+            background: #fafafa;
+            border: 1px solid #eee;
+        }
+
+        .trouble-step:first-child { border-radius: 8px 0 0 8px; }
+        .trouble-step:nth-child(2) { border-left: none; border-right: none; }
+        .trouble-step:last-child { border-radius: 0 8px 8px 0; }
+
+        .trouble-step-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .trouble-step-text {
+            font-size: 12.5px;
+            color: var(--color-text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ===== Footer ===== */
+        .port-footer {
+            margin-top: 28px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        .port-footer a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 640px) {
+            .portfolio { padding: 24px 20px; }
+            .intro-nav { grid-template-columns: 1fr; }
+            .info-line { flex-direction: column; gap: 4px; }
+            .role-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio">
+
+        <!-- ============ INTRO ============ -->
+        <div class="port-intro">
+            <div class="port-intro-header">
+                <div>
+                    <h1 class="port-intro-name">어현우</h1>
+                </div>
+                <div class="port-intro-contact">
+                    djgusdn0415@gmail.com · 010-7245-0414 · <a href="https://github.com/EHW99" target="_blank">github.com/EHW99</a>
+                </div>
+            </div>
+            <div class="port-intro-projects">
+                <div class="port-intro-project">
+                    <span class="port-intro-project-name">1. CodeFill</span>
+                    <span class="port-intro-project-desc">AI 기반 코딩테스트 학습 플랫폼 — 2026.01~02, 부트캠프 2인, Backend 담당</span>
+                </div>
+                <div class="port-intro-project">
+                    <span class="port-intro-project-name">2. MeetingMap</span>
+                    <span class="port-intro-project-desc">경로 기반 모임 장소 추천 서비스 — 2025.01~05, 캡스톤 4인, Backend 담당</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="project-divider" style="margin-top: 0;">
+
+        <!-- ============ PROJECT 1: CODEFILL ============ -->
+        <div id="codefill" class="project-section codefill">
+
+            <header class="port-header">
+                <div class="port-header-top">
+                    <div>
+                        <h1>CodeFill <span style="font-size: 12px; font-weight: 400; color: var(--color-text-muted); margin-left: 10px;">서비스 링크 ·</span> <a href="https://codefill.co.kr/" target="_blank" style="font-size: 13px; font-weight: 600; color: #15803d; text-decoration: none; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 2px 10px; border-radius: 12px;">codefill.co.kr</a></h1>
+                        <p class="subtitle">AI 기반 코딩테스트 학습 플랫폼</p>
+                    </div>
+                    <div class="port-header-links">
+                        <a href="https://github.com/joyuno/codefill" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="port-summary">
+                    <strong>"알고리즘 공부, 어디서부터 시작하지?"</strong> 를 해결하는 서비스입니다.<br>
+                    기존 코딩테스트 플랫폼(프로그래머스, 백준)은 문제 풀이 위주로 학습 진입장벽이 높고 동기 부여가 부족합니다.
+                    CodeFill은 AI 튜터가 수준별 맞춤 문제를 추천하고, 4가지 유형(빈칸/퍼즐/대화형/구현)으로 단계적 학습을 지원하며, 게이미피케이션(농장 시스템)으로 학습 동기를 부여합니다.
+                </div>
+                <div class="port-screenshot">
+                    <img src="screenshots/codefill2.png" alt="CodeFill 서비스 화면">
+                </div>
+            </header>
+
+            <section class="section">
+                <h2 class="section-title">프로젝트 정보</h2>
+                <div class="info-line">
+                    <span><strong>기간</strong> 2026.01 ~ 2026.02 (1개월)</span>
+                    <span><strong>팀 구성</strong> 2인 (부트캠프)</span>
+                    <span><strong>역할</strong> Backend 개발</span>
+                </div>
+                <p style="font-size: 13px; color: #777; margin-top: 10px;">Claude Code(AI)를 적극 활용해 개발했으며, 생성된 코드의 로직과 아키텍처를 검증·보완하며 구현했습니다.</p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">기술 스택</h2>
+                <div class="tech-group">
+                    <span class="tech-label">Backend</span>
+                    <div class="tech-items">
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>LangGraph</span>
+                        <span>Supabase</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <span class="tech-label">Frontend</span>
+                    <div class="tech-items">
+                        <span>Next.js</span>
+                        <span>TypeScript</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <span class="tech-label">Infra</span>
+                    <div class="tech-items">
+                        <span>AWS</span>
+                        <span>Docker</span>
+                        <span>GitHub Actions</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <span class="tech-label">외부 API</span>
+                    <div class="tech-items">
+                        <span>OpenAI</span>
+                        <span>Google Gemini</span>
+                        <span>OpenRouter</span>
+                        <span>Judge0</span>
+                        <span>Azure Translator</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">시스템 아키텍처</h2>
+                <div class="architecture-img">
+                    <img src="screenshots/codefill_architecture.png" alt="시스템 아키텍처">
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">주요 기능</h2>
+                <table class="feature-table">
+                    <tr>
+                        <th>AI 문제 추천</th>
+                        <td>AI 튜터가 사용자의 수준과 선호에 맞는 문제를 추천합니다. RAG 기반으로 백준/프로그래머스 문제 DB에서 난이도·태그·풀이 이력을 고려하여 최적의 문제를 탐색합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>4가지 문제 유형</th>
+                        <td>빈칸 채우기, 코드 퍼즐(블록 정렬), 1:1 대화형 튜터링, 코드 구현 등 다양한 유형으로 단계적 학습을 지원합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>실시간 코드 채점</th>
+                        <td>Judge0 API를 연동하여 Python 코드를 실시간으로 실행하고, 테스트 케이스 기반으로 채점합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>AI 튜터 채팅</th>
+                        <td>LangGraph 기반 대화형 AI 튜터가 힌트 제공, 코드 리뷰, 개념 설명을 합니다. 의도 분류 → 적절한 핸들러 라우팅으로 동작합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>게이미피케이션</th>
+                        <td>문제를 풀면 XP와 씨앗을 획득하고, 농장에서 작물을 재배할 수 있습니다. 티어(Silver~Master), 뱃지, 스트릭 시스템으로 학습 동기를 부여합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>AI 학습 분석</th>
+                        <td>BKT·ELO 기반으로 개념별 실력을 추적하고, LLM(Gemini Flash)이 에러 패턴·약점을 진단하여 맞춤형 학습 리포트를 생성합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>소셜 로그인</th>
+                        <td>카카오, 구글, 깃허브 3종 OAuth 로그인을 지원합니다. JWT 토큰 기반 인증과 계정 복구/연동 기능을 제공합니다.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">담당 기능</h2>
+                <div class="role-grid">
+                    <div class="role-card">
+                        <div class="role-card-title">소셜 로그인 (OAuth)</div>
+                        <ul>
+                            <li>카카오 / 구글 / 깃허브 OAuth 3종 통합</li>
+                            <li>JWT 토큰 기반 인증 처리</li>
+                            <li>회원가입 · 로그인 · 비밀번호 변경/재설정</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">코드 채점 시스템 (Judge0)</div>
+                        <ul>
+                            <li>Judge0 API 연동 (Python 코드 채점)</li>
+                            <li>Judge0 셀프호스팅 서버 구축</li>
+                            <li>테스트 케이스 기반 실시간 채점</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">게이미피케이션</div>
+                        <ul>
+                            <li>XP 획득 및 티어 승급 시스템 (Silver~Master)</li>
+                            <li>씨앗 수집 + 농장 재배 보상 구조</li>
+                            <li>뱃지 달성 · 연속 학습 스트릭 등 보상 루프 설계</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">AI 학습 분석 리포트</div>
+                        <ul>
+                            <li>Google Gemini Flash LLM 기반 맞춤형 리포트 생성</li>
+                            <li>BKT · ELO 레이팅으로 개념별 실력 추적</li>
+                            <li>에러 패턴 감지 및 약점 진단</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">관리자 · 문제 · 커뮤니티</div>
+                        <ul>
+                            <li>관리자 대시보드 (사용자/문제/통계 관리)</li>
+                            <li>문제 목록 조회 (난이도/출처/태그 필터링)</li>
+                            <li>풀이 게시판 CRUD · 투표 · 계층형 댓글</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">REST API 설계 / CI·CD</div>
+                        <ul>
+                            <li>RESTful 엔드포인트 설계</li>
+                            <li>Docker 컨테이너화 + AWS EC2/ECR 배포</li>
+                            <li>GitHub Actions 자동 배포 파이프라인</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">트러블슈팅</h2>
+
+                <div class="trouble-item">
+                    <div class="trouble-title">
+                        <span class="num">01</span>
+                        배포 후 특정 사용자만 로그인 실패 — bcrypt 72바이트 제한
+                    </div>
+                    <div class="trouble-flow">
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">상황</div>
+                            <div class="trouble-step-text">배포 후 대부분의 사용자는 정상 로그인되는데, 특정 사용자만 비밀번호가 맞는데도 로그인이 실패하는 문제가 발생했습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">원인</div>
+                            <div class="trouble-step-text">비밀번호 해싱에 사용하는 bcrypt가 최대 72바이트까지만 처리하는 제한이 있었습니다. 한글이 포함된 긴 비밀번호는 UTF-8 변환 시 바이트 수가 급증하여 72바이트를 초과하면 해싱 결과가 달라졌습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">해결</div>
+                            <div class="trouble-step-text">해싱 전에 비밀번호를 72바이트로 잘라내는 처리를 추가하고, bcrypt 라이브러리 버전 업데이트로 발생한 호환성 문제도 버전을 고정하여 함께 해결했습니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trouble-item">
+                    <div class="trouble-title">
+                        <span class="num">02</span>
+                        Docker 빌드 및 배포 환경 구성
+                    </div>
+                    <div class="trouble-flow">
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">상황</div>
+                            <div class="trouble-step-text">로컬에서 정상 동작하던 프로젝트가 Docker 빌드 시 여러 단계에서 반복적으로 실패했습니다. 빌드가 안정화되기까지 3번의 수정이 필요했습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">원인</div>
+                            <div class="trouble-step-text">패키지 매니저 충돌로 의존성 설치 실패, ORM 클라이언트 생성 단계 누락으로 DB 연결 실패, 환경변수 미전달 등 로컬과 컨테이너 환경의 차이에서 발생한 복합적 문제였습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">해결</div>
+                            <div class="trouble-step-text">패키지 매니저를 npm으로 통일하고, Dockerfile에 ORM 클라이언트 생성 단계와 환경변수를 추가했습니다. standalone 모드를 적용하여 이미지 크기도 줄였습니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trouble-item">
+                    <div class="trouble-title">
+                        <span class="num">03</span>
+                        Supabase + JWT 이중 인증 무한 로딩
+                    </div>
+                    <div class="trouble-flow">
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">상황</div>
+                            <div class="trouble-step-text">카카오 OAuth 추가 후 Supabase Auth 세션과 백엔드 JWT가 공존하면서, 로그인 후 무한 로딩이나 새로고침 시 인증이 풀리는 문제가 반복 발생했습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">원인</div>
+                            <div class="trouble-step-text">이메일 로그인은 Supabase 세션, OAuth 로그인은 백엔드 JWT를 사용하는 이중 인증 구조였습니다. 두 인증 상태가 동기화되지 않아 한쪽이 만료되면 충돌이 발생했습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">해결</div>
+                            <div class="trouble-step-text">Supabase Auth를 완전히 제거하고 FastAPI 자체 JWT로 인증을 일원화했습니다. 회원가입·로그인·OAuth 모두 백엔드에서 직접 JWT를 발급하는 구조로 전환하여 인증 충돌을 근본적으로 해결했습니다.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ============ DIVIDER ============ -->
+        <hr class="project-divider">
+
+        <!-- ============ PROJECT 2: MEETINGMAP ============ -->
+        <div id="meetingmap" class="project-section meetingmap">
+
+            <header class="port-header">
+                <div class="port-header-top">
+                    <div>
+                        <h1>MeetingMap</h1>
+                        <p class="subtitle">경로 기반 모임 장소 추천 및 자동 스케줄링 서비스</p>
+                    </div>
+                    <div class="port-header-links">
+                        <a href="https://github.com/EHW99/meeting_map" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="port-summary">
+                    <strong>"친구들이랑 어디서 만나지?"</strong> 를 해결하는 서비스입니다.<br>
+                    여러 사람의 출발지를 입력하면 최적의 중간 지점을 자동으로 찾아주고, 주변 맛집·카페·관광지를 추천합니다.
+                    추천받은 장소로 AI가 하루 일정을 자동 생성하거나, 직접 커스터마이징하여 스케줄을 만들 수 있습니다.
+                </div>
+                <div class="port-screenshot">
+                    <img src="screenshots/map.png" alt="MeetingMap 서비스 화면">
+                </div>
+            </header>
+
+            <section class="section">
+                <h2 class="section-title">프로젝트 정보</h2>
+                <div class="info-line">
+                    <span><strong>기간</strong> 2025.01 ~ 2025.05 (5개월)</span>
+                    <span><strong>팀 구성</strong> 4인 (캡스톤 디자인)</span>
+                    <span><strong>역할</strong> Backend 개발</span>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">기술 스택</h2>
+                <div class="tech-group">
+                    <span class="tech-label">Backend</span>
+                    <div class="tech-items">
+                        <span>Java</span>
+                        <span>Spring Boot</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <span class="tech-label">Frontend</span>
+                    <div class="tech-items">
+                        <span>React</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <span class="tech-label">Infra</span>
+                    <div class="tech-items">
+                        <span>AWS</span>
+                    </div>
+                </div>
+                <div class="tech-group">
+                    <span class="tech-label">외부 API</span>
+                    <div class="tech-items">
+                        <span>Kakao API</span>
+                        <span>Tmap API</span>
+                        <span>Google Places API</span>
+                        <span>OpenAI API</span>
+                        <span>Tour API</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">시스템 아키텍처</h2>
+                <div class="architecture-img">
+                    <img src="screenshots/meetingmap_architecture.png" alt="시스템 아키텍처">
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">주요 기능</h2>
+                <table class="feature-table">
+                    <tr>
+                        <th>중간지점 탐색</th>
+                        <td>최대 4개 출발지를 입력하면 Convex Hull 알고리즘으로 중간 지점을 자동 계산하고, 각 출발지에서의 예상 소요 시간을 표시합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>장소 추천</th>
+                        <td>주변 장소를 카테고리별(관광지, 음식점, 카페, 숙박)로 필터링합니다. Kakao Maps, Google Places, Tour API 데이터를 통합하여 평점, 리뷰 등 풍부한 정보를 제공합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>AI 스케줄 생성</th>
+                        <td>OpenAI API로 테마에 맞는 장소를 추천받고, 현재 위치에서 가장 가까운 장소를 순차 선택하여 최적 방문 순서를 계산합니다. 식사 시간대 자동 배치, 이동 수단별 소요 시간을 반영합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>커뮤니티</th>
+                        <td>카테고리별 게시판에서 모임 후기를 공유합니다. 이미지 첨부(AWS S3), 좋아요/싫어요/스크랩, 댓글 기능을 지원합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>그룹 / 친구</th>
+                        <td>그룹을 생성하고 친구를 초대하여 스케줄을 공유할 수 있습니다. 친구 요청/수락 기반의 소셜 기능과 그룹 전용 게시판을 제공합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>인증</th>
+                        <td>JWT 기반 인증과 카카오 OAuth 2.0 소셜 로그인을 지원합니다.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">담당 기능</h2>
+                <div class="role-grid">
+                    <div class="role-card">
+                        <div class="role-card-title">인증 / 보안</div>
+                        <ul>
+                            <li>JWT 토큰 발급 및 검증</li>
+                            <li>카카오 OAuth 2.0 소셜 로그인</li>
+                            <li>HTTP-Only 쿠키 기반 토큰 관리</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">게시판</div>
+                        <ul>
+                            <li>게시글 CRUD + 이미지 첨부</li>
+                            <li>좋아요/싫어요 · 스크랩 기능</li>
+                            <li>댓글 CRUD</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">그룹</div>
+                        <ul>
+                            <li>그룹 생성 및 관리</li>
+                            <li>멤버 초대 (친구만 초대 가능)</li>
+                            <li>그룹 게시판 · 스케줄 공유</li>
+                        </ul>
+                    </div>
+                    <div class="role-card">
+                        <div class="role-card-title">친구</div>
+                        <ul>
+                            <li>친구 요청 / 수락 / 거절</li>
+                            <li>양방향 레코드 관리</li>
+                            <li>@Transactional 기반 데이터 정합성 보장</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">트러블슈팅</h2>
+
+                <div class="trouble-item">
+                    <div class="trouble-title">
+                        <span class="num">01</span>
+                        게시글 삭제 시 FK 제약조건 위반
+                    </div>
+                    <div class="trouble-flow">
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">상황</div>
+                            <div class="trouble-step-text">게시글 삭제 시 FK 제약조건 위반 에러가 발생하여 삭제가 실패했습니다. 댓글, 좋아요, 파일 등 연관 데이터가 게시글을 참조하고 있었습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">원인</div>
+                            <div class="trouble-step-text">Comment는 Board와 별도 도메인으로 분리되어 cascade 설정이 없었고, 의도치 않은 삭제를 방지하기 위해 cascade 대신 명시적 삭제 방식을 선택했습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">해결</div>
+                            <div class="trouble-step-text">서비스 레이어에서 S3 파일 → 댓글 → 게시글 순으로 삭제 순서를 직접 관리했습니다. cascade 없이 명시적으로 처리하여 의도하지 않은 연쇄 삭제를 방지했습니다.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trouble-item">
+                    <div class="trouble-title">
+                        <span class="num">02</span>
+                        게시글 목록 조회 시 다중 테이블 JOIN 성능 문제
+                    </div>
+                    <div class="trouble-flow">
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">상황</div>
+                            <div class="trouble-step-text">게시글 목록에서 좋아요 수, 댓글 수, 작성자 닉네임, 썸네일 등을 표시해야 했습니다. Board 엔티티로 조회하면 매 게시글마다 여러 테이블을 조회하는 N+1 문제가 발생했습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">원인</div>
+                            <div class="trouble-step-text">좋아요/싫어요/댓글/파일/사용자 테이블에 각각 서브쿼리나 JOIN이 필요했고, 목록 조회와 상세 조회에서 필요한 데이터 구조가 달랐습니다.</div>
+                        </div>
+                        <div class="trouble-step">
+                            <div class="trouble-step-label">해결</div>
+                            <div class="trouble-step-text">목록 조회용 DB View를 생성하여 필요한 데이터를 한 번의 쿼리로 가져오도록 개선했습니다. View를 JPA 읽기 전용 엔티티로 매핑하고, Hibernate 설정을 조정하여 View와 테이블 간 충돌을 방지했습니다.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ============ FOOTER ============ -->
+        <div class="port-footer">
+            어현우 ·
+            <a href="https://github.com/joyuno/codefill" target="_blank">CodeFill GitHub</a> ·
+            <a href="https://github.com/EHW99/meeting_map" target="_blank">MeetingMap GitHub</a>
+        </div>
+
+    </div>
+</body>
+</html>
