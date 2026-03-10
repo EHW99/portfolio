@@ -955,7 +955,7 @@
                 <div class="trouble-item">
                     <div class="trouble-title">
                         <span class="num">03</span>
-                        Supabase + JWT 이중 인증 무한 로딩
+                        Supabase + JWT 이중 인증 충돌
                     </div>
                     <div class="trouble-flow">
                         <div class="trouble-step">
@@ -1056,12 +1056,16 @@
                 <h2 class="section-title">주요 기능</h2>
                 <table class="feature-table">
                     <tr>
-                        <th>중간지점 탐색</th>
-                        <td>최대 4개 출발지를 입력하면 Convex Hull 알고리즘으로 중간 지점을 자동 계산하고, 각 출발지에서의 예상 소요 시간을 표시합니다.</td>
+                        <th>지도 / 중간지점</th>
+                        <td>최대 4개 출발지를 입력하면 중간 지점을 자동 계산합니다. 장소명 자동완성, 현재 위치 기반 검색, 출발지-도착지 검색 등 다양한 방식을 지원합니다.</td>
+                    </tr>
+                    <tr>
+                        <th>경로 표시</th>
+                        <td>TMap API를 활용하여 도보, 자동차, 대중교통 3가지 이동 수단의 길찾기를 지원합니다. 출발지에서 중간지점까지의 경로와 예상 소요 시간을 지도 위에 표시합니다.</td>
                     </tr>
                     <tr>
                         <th>장소 추천</th>
-                        <td>주변 장소를 카테고리별(관광지, 음식점, 카페, 숙박)로 필터링합니다. Kakao Maps, Google Places, Tour API 데이터를 통합하여 평점, 리뷰 등 풍부한 정보를 제공합니다.</td>
+                        <td>주변 장소를 카테고리별(관광지, 음식점, 카페, 숙박)로 필터링합니다. Tour API와 Google Places API 데이터를 통합하여 평점, 리뷰 등 풍부한 정보를 제공합니다.</td>
                     </tr>
                     <tr>
                         <th>AI 스케줄 생성</th>
