@@ -1139,7 +1139,7 @@
                         </div>
                         <div class="trouble-step">
                             <div class="trouble-step-label">해결</div>
-                            <div class="trouble-step-text">서비스 레이어에서 첨부 파일 → 댓글 → 게시글 순으로 삭제 순서를 직접 관리했습니다. cascade 없이 명시적으로 처리하여 의도하지 않은 연쇄 삭제를 방지했습니다.</div>
+                            <div class="trouble-step-text">서비스 레이어에서 이미지 파일 → 댓글 → 게시글 순으로 삭제 순서를 직접 관리했습니다. cascade 없이 명시적으로 처리하여 의도하지 않은 연쇄 삭제를 방지했습니다.</div>
                         </div>
                     </div>
                 </div>
@@ -1160,7 +1160,7 @@
                         </div>
                         <div class="trouble-step">
                             <div class="trouble-step-label">해결</div>
-                            <div class="trouble-step-text">목록 조회용 DB View를 생성하여 필요한 데이터를 한 번의 쿼리로 가져오도록 개선했습니다. View를 JPA 읽기 전용 엔티티로 매핑하고, Hibernate 설정을 조정하여 View와 테이블 간 충돌을 방지했습니다.</div>
+                            <div class="trouble-step-text">목록 조회용 DB View를 생성하여 필요한 데이터를 한 번의 쿼리로 가져오도록 개선했습니다. View를 읽기 전용으로 매핑하고, 기존 테이블과 충돌하지 않도록 설정을 조정했습니다.</div>
                         </div>
                     </div>
                 </div>
