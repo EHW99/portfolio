@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | MeetingMap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-text: #1a1a1a;
+            --color-text-secondary: #4a4a4a;
+            --color-text-muted: #777777;
+            --color-accent: #2563eb;
+            --color-border: #e0e0e0;
+            --color-border-light: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .portfolio {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 48px 56px;
+            background: white;
+        }
+
+        @media print {
+            body { background: white; }
+            .portfolio {
+                padding: 0;
+                max-width: 100%;
+            }
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+            .architecture-img img {
+                break-inside: avoid;
+            }
+        }
+
+        /* ===== Header ===== */
+        .port-header {
+            padding-bottom: 24px;
+            border-bottom: 2px solid var(--color-text);
+            margin-bottom: 28px;
+        }
+
+        .port-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .port-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .port-header .subtitle {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            font-weight: 400;
+            margin-top: 2px;
+        }
+
+        .port-header-links {
+            text-align: right;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+        }
+
+        .port-header-links a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .port-header-links a:hover {
+            text-decoration: underline;
+        }
+
+        .port-summary {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            background: #fff8f0;
+            padding: 12px 14px;
+            border-radius: 6px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .port-screenshot {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .port-screenshot img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ===== Section ===== */
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        /* ===== Project Info ===== */
+        .info-line {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            display: flex;
+            gap: 20px;
+        }
+
+        .info-line span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-line strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        /* ===== Tech Stack ===== */
+        .tech-group {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            padding: 8px 0;
+        }
+
+        .tech-group + .tech-group {
+            border-top: 1px solid var(--color-border-light);
+        }
+
+        .tech-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text);
+            min-width: 70px;
+        }
+
+        .tech-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-items span {
+            font-size: 12px;
+            padding: 3px 10px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 4px;
+            color: #9a3412;
+        }
+
+        /* ===== Architecture ===== */
+        .architecture-img {
+            text-align: center;
+        }
+
+        .architecture-img img {
+            max-width: 100%;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+        }
+
+        /* ===== Feature Table ===== */
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--color-border);
+        }
+
+        .feature-table th,
+        .feature-table td {
+            text-align: left;
+            padding: 10px 12px;
+            font-size: 13px;
+            border: 1px solid var(--color-border);
+            vertical-align: top;
+        }
+
+        .feature-table th {
+            font-weight: 600;
+            white-space: nowrap;
+            width: 130px;
+            color: #7c2d12;
+            background: #fff7ed;
+        }
+
+        .feature-table td {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== My Role ===== */
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .role-card {
+            padding: 14px 16px;
+            border: 1px solid #fed7aa;
+            border-radius: 6px;
+            background: #fffcf9;
+        }
+
+        .role-card-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #7c2d12;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .role-card-title::before {
+            content: '';
+            display: inline-block;
+            width: 3px;
+            height: 14px;
+            background: #ea580c;
+            border-radius: 2px;
+        }
+
+        .role-card ul {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            padding-left: 14px;
+            line-height: 1.7;
+        }
+
+        .role-card li {
+            margin-bottom: 2px;
+        }
+
+        /* ===== Troubleshooting ===== */
+        .trouble-item {
+            margin-bottom: 24px;
+        }
+
+        .trouble-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .trouble-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trouble-title .num {
+            font-size: 12px;
+            font-weight: 800;
+            color: #ea580c;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .trouble-flow {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+        }
+
+        .trouble-step {
+            padding: 14px 16px;
+            background: #fafafa;
+            border: 1px solid #eee;
+        }
+
+        .trouble-step:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .trouble-step:nth-child(2) {
+            border-left: none;
+            border-right: none;
+        }
+
+        .trouble-step:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .trouble-step-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .trouble-step:last-child .trouble-step-label {
+            color: #ea580c;
+        }
+
+        .trouble-step-text {
+            font-size: 12.5px;
+            color: var(--color-text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ===== Footer ===== */
+        .port-footer {
+            margin-top: 28px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            font-size: 12px;
+            color: var(--color-text-muted);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 640px) {
+            .portfolio {
+                padding: 24px 20px;
+            }
+            .info-grid,
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio">
+
+        <!-- Header -->
+        <header class="port-header">
+            <div class="port-header-top">
+                <div>
+                    <h1>MeetingMap</h1>
+                    <p class="subtitle">경로 기반 모임 장소 추천 및 자동 스케줄링 서비스</p>
+                </div>
+                <div class="port-header-links">
+                    <a href="https://github.com/EHW99/meeting_map" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <div class="port-summary">
+                <strong>"친구들이랑 어디서 만나지?"</strong> 를 해결하는 서비스입니다.<br>
+                여러 사람의 출발지를 입력하면 최적의 중간 지점을 자동으로 찾아주고, 주변 맛집·카페·관광지를 추천합니다.
+                추천받은 장소로 AI가 하루 일정을 자동 생성하거나, 직접 커스터마이징하여 스케줄을 만들 수 있습니다.
+            </div>
+            <div class="port-screenshot">
+                <img src="screenshots/map.png" alt="MeetingMap 서비스 화면">
+            </div>
+        </header>
+
+        <!-- Project Info -->
+        <section class="section">
+            <h2 class="section-title">프로젝트 정보</h2>
+            <div class="info-line">
+                <span><strong>기간</strong> 2025.01 ~ 2025.05 (5개월)</span>
+                <span><strong>팀 구성</strong> 4인 (캡스톤 디자인)</span>
+                <span><strong>역할</strong> Backend 개발</span>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="section">
+            <h2 class="section-title">기술 스택</h2>
+            <div class="tech-group">
+                <span class="tech-label">Backend</span>
+                <div class="tech-items">
+                    <span>Java</span>
+                    <span>Spring Boot</span>
+                    <span>MySQL</span>
+                </div>
+            </div>
+            <div class="tech-group">
+                <span class="tech-label">Frontend</span>
+                <div class="tech-items">
+                    <span>React</span>
+                </div>
+            </div>
+            <div class="tech-group">
+                <span class="tech-label">Infra</span>
+                <div class="tech-items">
+                    <span>AWS</span>
+                </div>
+            </div>
+            <div class="tech-group">
+                <span class="tech-label">외부 API</span>
+                <div class="tech-items">
+                    <span>Kakao API</span>
+                    <span>Tmap API</span>
+                    <span>Google Places API</span>
+                    <span>OpenAI API</span>
+                    <span>Tour API</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture -->
+        <section class="section">
+            <h2 class="section-title">시스템 아키텍처</h2>
+            <div class="architecture-img">
+                <img src="screenshots/meetingmap_architecture.png" alt="시스템 아키텍처">
+            </div>
+        </section>
+
+        <!-- Main Features -->
+        <section class="section">
+            <h2 class="section-title">주요 기능</h2>
+            <table class="feature-table">
+                <tr>
+                    <th>지도 / 중간지점</th>
+                    <td>최대 4개 출발지를 입력하면 중간 지점을 자동 계산합니다. 장소명 자동완성, 현재 위치 기반 검색, 출발지-도착지 검색 등 다양한 방식을 지원합니다.</td>
+                </tr>
+                <tr>
+                    <th>경로 표시</th>
+                    <td>TMap API를 활용하여 도보, 자동차, 대중교통 3가지 이동 수단의 길찾기를 지원합니다. 출발지에서 중간지점까지의 경로와 예상 소요 시간을 지도 위에 표시합니다.</td>
+                </tr>
+                <tr>
+                    <th>장소 추천</th>
+                    <td>주변 장소를 카테고리별(관광지, 음식점, 카페, 숙박)로 필터링합니다. Tour API와 Google Places API 데이터를 통합하여 평점, 리뷰 등 풍부한 정보를 제공합니다.</td>
+                </tr>
+                <tr>
+                    <th>AI 스케줄 생성</th>
+                    <td>OpenAI API로 테마에 맞는 장소를 추천받고, 현재 위치에서 가장 가까운 장소를 순차 선택하여 최적 방문 순서를 계산합니다. 식사 시간대 자동 배치, 이동 수단별 소요 시간을 반영합니다.</td>
+                </tr>
+                <tr>
+                    <th>커뮤니티</th>
+                    <td>카테고리별 게시판에서 모임 후기를 공유합니다. 이미지 첨부, 좋아요/싫어요/스크랩, 댓글 기능을 지원합니다.</td>
+                </tr>
+                <tr>
+                    <th>그룹 / 친구</th>
+                    <td>그룹을 생성하고 친구를 초대하여 스케줄을 공유할 수 있습니다. 친구 요청/수락 기반의 소셜 기능과 그룹 전용 게시판을 제공합니다.</td>
+                </tr>
+                <tr>
+                    <th>인증</th>
+                    <td>JWT 기반 인증과 카카오 OAuth 2.0 소셜 로그인을 지원합니다.</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- My Role -->
+        <section class="section">
+            <h2 class="section-title">담당 기능</h2>
+            <div class="role-grid">
+                <div class="role-card">
+                    <div class="role-card-title">인증 / 보안</div>
+                    <ul>
+                        <li>JWT 토큰 발급 및 검증</li>
+                        <li>카카오 OAuth 2.0 소셜 로그인</li>
+                        <li>HTTP-Only 쿠키 기반 토큰 관리</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <div class="role-card-title">게시판</div>
+                    <ul>
+                        <li>게시글 CRUD + 이미지 첨부</li>
+                        <li>좋아요/싫어요 · 스크랩 기능</li>
+                        <li>댓글 CRUD</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <div class="role-card-title">그룹</div>
+                    <ul>
+                        <li>그룹 생성 및 관리</li>
+                        <li>멤버 초대 (친구만 초대 가능)</li>
+                        <li>그룹 게시판 · 스케줄 공유</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <div class="role-card-title">친구</div>
+                    <ul>
+                        <li>친구 요청 / 수락 / 거절</li>
+                        <li>양방향 레코드 관리</li>
+                        <li>@Transactional 기반 데이터 정합성 보장</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Troubleshooting -->
+        <section class="section">
+            <h2 class="section-title">트러블슈팅</h2>
+
+            <div class="trouble-item">
+                <div class="trouble-title">
+                    <span class="num">01</span>
+                    게시글 삭제 시 FK 제약조건 위반
+                </div>
+                <div class="trouble-flow">
+                    <div class="trouble-step">
+                        <div class="trouble-step-label">상황</div>
+                        <div class="trouble-step-text">게시글 삭제 시 FK 제약조건 위반 에러가 발생하여 삭제가 실패했습니다. 댓글, 좋아요, 파일 등 연관 데이터가 게시글을 참조하고 있었습니다.</div>
+                    </div>
+                    <div class="trouble-step">
+                        <div class="trouble-step-label">원인</div>
+                        <div class="trouble-step-text">Comment는 Board와 별도 도메인으로 분리되어 cascade 설정이 없었고, 의도치 않은 삭제를 방지하기 위해 cascade 대신 명시적 삭제 방식을 선택했습니다.</div>
+                    </div>
+                    <div class="trouble-step">
+                        <div class="trouble-step-label">해결</div>
+                        <div class="trouble-step-text">서비스 레이어에서 이미지 파일 → 댓글 → 게시글 순으로 삭제 순서를 직접 관리했습니다. cascade 없이 명시적으로 처리하여 의도하지 않은 연쇄 삭제를 방지했습니다.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trouble-item">
+                <div class="trouble-title">
+                    <span class="num">02</span>
+                    게시글 목록 조회 시 다중 테이블 JOIN 성능 문제
+                </div>
+                <div class="trouble-flow">
+                    <div class="trouble-step">
+                        <div class="trouble-step-label">상황</div>
+                        <div class="trouble-step-text">게시글 목록에서 좋아요 수, 댓글 수, 작성자 닉네임, 썸네일 등을 표시해야 했습니다. Board 엔티티로 조회하면 매 게시글마다 여러 테이블을 조회하는 N+1 문제가 발생했습니다.</div>
+                    </div>
+                    <div class="trouble-step">
+                        <div class="trouble-step-label">원인</div>
+                        <div class="trouble-step-text">좋아요/싫어요/댓글/파일/사용자 테이블에 각각 서브쿼리나 JOIN이 필요했고, 목록 조회와 상세 조회에서 필요한 데이터 구조가 달랐습니다.</div>
+                    </div>
+                    <div class="trouble-step">
+                        <div class="trouble-step-label">해결</div>
+                        <div class="trouble-step-text">목록 조회용 DB View를 생성하여 필요한 데이터를 한 번의 쿼리로 가져오도록 개선했습니다. View를 읽기 전용으로 매핑하고, 기존 테이블과 충돌하지 않도록 설정을 조정했습니다.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="port-footer">
+            어현우 · Backend Developer · <a href="https://github.com/EHW99/meeting_map" target="_blank" style="color: var(--color-accent); text-decoration: none;">GitHub</a>
+        </div>
+
+    </div>
+</body>
+</html>

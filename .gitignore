@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Personal docs (절대 올리지 말 것)
+*.txt
+*.pdf
+!files/*.pdf
