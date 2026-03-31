@@ -12,3 +12,6 @@ desktop.ini
 *.txt
 *.pdf
 !files/*.pdf
+
+# PDF 추출용 HTML (로컬 전용)
+portfolio_pdf.html
