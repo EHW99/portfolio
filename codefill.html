@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CodeFill · 어현우</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=3" />
+<style>
+.figure { margin: 0 0 14px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.figure img { display: block; width: 100%; height: auto; }
+.figure-caption { display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg); font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
+.figure-caption .label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); flex-shrink: 0; }
+.figure.arch { background: #ffffff; }
+.figure.arch img { padding: 24px; box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <div class="sb-brand">
+      <div class="mark">EH</div>
+      <div class="name">어현우</div>
+      <div class="ver">v2026.4</div>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-title">Getting started</div>
+      <ul class="sb-list">
+        <li><a class="sb-link" href="index.html#overview"><span class="dot"></span>Overview</a></li>
+        <li><a class="sb-link" href="index.html#background"><span class="dot"></span>Background</a></li>
+        <li><a class="sb-link" href="index.html#skills"><span class="dot"></span>Skills</a></li>
+      </ul>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-title">Projects</div>
+      <ul class="sb-list">
+        <li><a class="sb-link" href="index.html#projects"><span class="dot"></span>Index</a></li>
+        <li><a class="sb-link sub active" href="codefill.html">CodeFill</a></li>
+        <li><a class="sb-link sub" href="meetingmap.html">MeetingMap</a></li>
+      </ul>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-title">Reference</div>
+      <ul class="sb-list">
+        <li><a class="sb-link" href="index.html#certifications"><span class="dot"></span>Certifications</a></li>
+        <li><a class="sb-link" href="index.html#contact"><span class="dot"></span>Contact</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main">
+    <nav class="breadcrumb">
+      <a href="index.html">reference</a>
+      <span class="sep">/</span>
+      <a href="index.html#projects">projects</a>
+      <span class="sep">/</span>
+      <span>codefill</span>
+    </nav>
+
+    <h1 class="page-title">CodeFill</h1>
+    <p class="page-subtitle">
+      AI 튜터의 맞춤 문제 추천과 실시간 풀이 가이드로 코딩테스트의 높은
+      진입장벽을 낮추는 학습 플랫폼. 빈칸·퍼즐·대화·구현 4가지 유형으로
+      단계적 학습을 지원하고, 농장 게이미피케이션으로 학습 동기를 부여합니다.
+    </p>
+    <div class="page-meta">
+      <span>Status <span style="color:var(--text-secondary)">live</span></span>
+      <span class="sep">·</span>
+      <a href="https://codefill.site/" target="_blank" rel="noopener" class="pill" style="color:var(--accent); text-decoration:none;"><span class="dot"></span>codefill.site</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/EHW99/codefill" target="_blank" rel="noopener" style="font-family:var(--font-mono); font-size:12px;">GitHub ↗</a>
+    </div>
+
+    <!-- Overview -->
+    <section class="section" id="overview">
+      <h2 class="section-h2"><span class="num">01</span>Overview</h2>
+      <p class="lead">
+        <strong>"알고리즘 공부, 어디서부터 시작하지?"</strong> 를 해결하는
+        서비스입니다. 기존 코딩테스트 플랫폼(프로그래머스, 백준)은 문제 풀이
+        위주로 학습 진입장벽이 높고 동기 부여가 부족합니다.
+      </p>
+      <p class="lead secondary">
+        CodeFill은 AI 튜터가 수준별 맞춤 문제를 추천하고, 4가지 유형(빈칸/퍼즐/대화형/구현)으로
+        단계적 학습을 지원하며, 게이미피케이션(농장 시스템)으로 학습 동기를
+        부여합니다. Claude Code(AI)를 적극 활용해 개발했으며, 생성된 코드의
+        로직과 아키텍처를 검증·보완하며 구현했습니다.
+      </p>
+
+      <figure class="figure">
+        <img src="assets/codefill-home.png" alt="CodeFill 홈 화면 — 학습 대시보드" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.01</span>
+          <span>홈 대시보드. 푼 문제 수·획득 뱃지·연속 학습 스트릭, 잔디 그래프, 농장 위젯.</span>
+        </figcaption>
+      </figure>
+
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-key">Type</div>
+          <div class="fact-val">Web service · 학습 플랫폼</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Timeline</div>
+          <div class="fact-val"><span class="mono">2026.01 — 2026.02</span> · 1개월</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Team</div>
+          <div class="fact-val">2인 · 부트캠프 · Backend 담당</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Tooling</div>
+          <div class="fact-val">Claude Code 활용 (Vibe coding)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section" id="architecture">
+      <h2 class="section-h2"><span class="num">02</span>Architecture</h2>
+      <p class="lead secondary">
+        FastAPI 백엔드 + Next.js 프론트엔드 + Supabase DB 구조. 외부 API
+        다수를 게이트웨이 레이어에서 통합 호출합니다.
+      </p>
+
+      <figure class="figure arch">
+        <img src="assets/codefill-architecture.png" alt="CodeFill 시스템 아키텍처 다이어그램" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.02</span>
+          <span>시스템 아키텍처. Next.js → FastAPI(Routers / LangGraph / Services) → OpenRouter LLM · Supabase(pgvector) · 외부 API(Judge0 · Azure Translator · LangSmith · GA4).</span>
+        </figcaption>
+      </figure>
+
+<pre class="block"><span class="c">// Request path</span>
+<span class="k">Client</span>     ──▶  Next.js (TypeScript, SSR)
+                │
+                ▼
+<span class="k">API</span>        ──▶  FastAPI (Python)
+                │   JWT auth · OAuth router · 의도 분류
+                ▼
+<span class="k">Services</span>   ──▶  LangGraph · Judge0 · BKT/ELO 분석
+                │
+                ├──▶  OpenAI / Gemini / OpenRouter   (LLM)
+                ├──▶  Judge0 (self-hosted)            (코드 채점)
+                ├──▶  Azure Translator                (번역)
+                └──▶  Supabase (Postgres)             (DB)
+
+<span class="c">// Deploy</span>
+GitHub Actions ──▶ Docker ──▶ AWS EC2 / ECR</pre>
+
+      <table class="spec">
+        <thead>
+          <tr><th>Layer</th><th>Stack</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Backend</td><td class="mono">Python · FastAPI · LangGraph</td><td>JWT 인증, OAuth 3종 통합, AI 튜터 라우팅.</td></tr>
+          <tr><td>DB</td><td class="mono">Supabase (Postgres)</td><td>문제 DB · 사용자 · 게이미피케이션 상태.</td></tr>
+          <tr><td>Frontend</td><td class="mono">Next.js · TypeScript</td><td>SSR · standalone 빌드.</td></tr>
+          <tr><td>Infra</td><td class="mono">AWS · Docker · GitHub Actions</td><td>EC2/ECR 배포 · CI/CD 파이프라인.</td></tr>
+          <tr><td>External</td><td class="mono">OpenAI · Gemini · Judge0 · Azure</td><td>LLM 추론 · 코드 채점 · 번역.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <h2 class="section-h2"><span class="num">03</span>Features</h2>
+
+      <figure class="figure">
+        <img src="assets/codefill-chat.png" alt="문제 풀이 화면 — AI 코딩 튜터 채팅" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.03</span>
+          <span>문제 풀이 화면. 좌측 문제 설명, 중앙 코드 에디터(빈칸 채우기 모드), 우측 LangGraph 기반 AI 코딩 튜터.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="assets/codefill-farm.jpg" alt="농장 게이미피케이션 화면" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.04</span>
+          <span>농장 게이미피케이션. 문제 풀이로 획득한 씨앗을 심고 작물을 재배. XP·티어·뱃지·스트릭과 연동.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="assets/codefill-admin.jpg" alt="관리자 콘솔 — 사용자 목록" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.05</span>
+          <span>관리자 콘솔. 사용자/문제/통계 관리, 이메일·닉네임 검색, 액션 필터, 정지 처리.</span>
+        </figcaption>
+      </figure>
+
+      <dl class="dl">
+        <div class="dl-row">
+          <dt class="dl-key">AI 문제 추천</dt>
+          <dd class="dl-val">
+            AI 튜터가 사용자의 수준과 선호에 맞는 문제를 추천합니다. RAG 기반으로
+            백준/프로그래머스 문제 DB에서 난이도·태그·풀이 이력을 고려하여
+            최적의 문제를 탐색합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">문제 유형</dt>
+          <dd class="dl-val">
+            빈칸 채우기, 코드 퍼즐(블록 정렬), 1:1 대화형 튜터링, 코드 구현 등
+            4가지 유형으로 단계적 학습을 지원합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">실시간 채점</dt>
+          <dd class="dl-val">
+            Judge0 API를 연동하여 Python 코드를 실시간으로 실행하고 테스트
+            케이스 기반으로 채점합니다. 자체 호스팅 환경 구축.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">AI 튜터 채팅</dt>
+          <dd class="dl-val">
+            LangGraph 기반 대화형 AI 튜터가 힌트 제공·코드 리뷰·개념 설명을
+            수행합니다. 의도 분류 → 적절한 핸들러 라우팅 구조로 동작합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">게이미피케이션</dt>
+          <dd class="dl-val">
+            문제를 풀면 XP와 씨앗을 획득하고 농장에서 작물을 재배할 수 있습니다.
+            티어(Silver~Master) · 뱃지 · 연속 학습 스트릭으로 학습 동기를 부여합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">학습 분석 리포트</dt>
+          <dd class="dl-val">
+            BKT·ELO 기반으로 개념별 실력을 추적하고, LLM(Gemini Flash)이
+            에러 패턴·약점을 진단하여 맞춤형 학습 리포트를 생성합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">소셜 로그인</dt>
+          <dd class="dl-val">
+            카카오 · 구글 · 깃허브 3종 OAuth 로그인을 지원합니다. JWT 토큰 기반
+            인증과 계정 복구·연동 기능을 제공합니다.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Responsibilities -->
+    <section class="section" id="responsibilities">
+      <h2 class="section-h2"><span class="num">04</span>Responsibilities</h2>
+      <p class="lead secondary">
+        백엔드 개발 전반을 담당했습니다. 인증·채점·게이미피케이션·분석 리포트·관리자
+        도메인을 직접 설계하고 구현했습니다.
+      </p>
+      <ul style="list-style:none; padding-left:0;">
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>소셜 로그인 (OAuth)</strong> — 카카오·구글·깃허브 3종 통합, JWT 토큰 기반 인증, 회원가입·로그인·비밀번호 변경/재설정.</span>
+        </li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>코드 채점 시스템</strong> — Judge0 API 연동(Python 채점), 셀프호스팅 서버 구축, 테스트 케이스 기반 실시간 채점.</span>
+        </li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>게이미피케이션</strong> — XP·티어 승급(Silver~Master), 씨앗·농장 재배 보상 구조, 뱃지·스트릭 보상 루프 설계.</span>
+        </li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>AI 학습 분석 리포트</strong> — Gemini Flash LLM 기반 맞춤형 리포트, BKT·ELO 레이팅 개념별 실력 추적, 에러 패턴·약점 진단.</span>
+        </li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>관리자 · 문제 · 커뮤니티</strong> — 관리자 대시보드, 문제 목록 필터링, 풀이 게시판 CRUD·투표·계층형 댓글.</span>
+        </li>
+        <li style="padding:8px 0; display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>REST API · CI/CD</strong> — RESTful 엔드포인트 설계, Docker 컨테이너화, AWS EC2/ECR 배포, GitHub Actions 자동 배포 파이프라인.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="section" id="troubleshooting">
+      <h2 class="section-h2"><span class="num">05</span>Troubleshooting</h2>
+      <p class="lead secondary">
+        실서비스 배포 과정에서 마주친 문제와 해결 방식. 각 항목은 고정
+        앵커를 가집니다.
+      </p>
+
+      <div class="ts">
+        <div class="ts-item" id="01">
+          <div class="ts-anchor">#01</div>
+          <div>
+            <div class="ts-title">배포 후 특정 사용자만 로그인 실패 — bcrypt 72바이트 제한</div>
+            <div class="ts-body">
+              <p>
+                <strong>상황.</strong> 배포 후 대부분의 사용자는 정상 로그인되는데,
+                특정 사용자만 비밀번호가 맞는데도 로그인이 실패하는 문제가 발생했습니다.
+              </p>
+              <p>
+                <strong>원인.</strong> 비밀번호 해싱에 사용하는 <code class="inline">bcrypt</code>가
+                최대 72바이트까지만 처리하는 제한이 있었습니다. 한글이 포함된 긴
+                비밀번호는 UTF-8 변환 시 바이트 수가 급증하여 72바이트를 초과하면
+                해싱 결과가 달라졌습니다.
+              </p>
+              <p>
+                <strong>해결.</strong> 해싱 전에 비밀번호를 72바이트로 잘라내는
+                처리를 추가하고, bcrypt 라이브러리 버전 업데이트로 발생한 호환성
+                문제도 버전을 고정하여 함께 해결했습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ts-item" id="02">
+          <div class="ts-anchor">#02</div>
+          <div>
+            <div class="ts-title">Docker 빌드 및 배포 환경 구성</div>
+            <div class="ts-body">
+              <p>
+                <strong>상황.</strong> 로컬에서 정상 동작하던 프로젝트가 Docker
+                빌드 시 여러 단계에서 반복적으로 실패했습니다. 빌드가 안정화되기까지
+                3번의 수정이 필요했습니다.
+              </p>
+              <p>
+                <strong>원인.</strong> 패키지 매니저 충돌로 의존성 설치 실패,
+                ORM 클라이언트 생성 단계 누락으로 DB 연결 실패, 환경변수 미전달 등
+                로컬과 컨테이너 환경의 차이에서 발생한 복합적 문제였습니다.
+              </p>
+              <p>
+                <strong>해결.</strong> 패키지 매니저를 <code class="inline">npm</code>으로
+                통일하고, Dockerfile에 ORM 클라이언트 생성 단계와 환경변수를
+                추가했습니다. <code class="inline">standalone</code> 모드를 적용하여
+                이미지 크기도 줄였습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ts-item" id="03">
+          <div class="ts-anchor">#03</div>
+          <div>
+            <div class="ts-title">Supabase + JWT 이중 인증 충돌</div>
+            <div class="ts-body">
+              <p>
+                <strong>상황.</strong> 카카오 OAuth 추가 후 Supabase Auth 세션과
+                백엔드 JWT가 공존하면서, 로그인 후 무한 로딩이나 새로고침 시
+                인증이 풀리는 문제가 반복 발생했습니다.
+              </p>
+              <p>
+                <strong>원인.</strong> 이메일 로그인은 Supabase 세션, OAuth 로그인은
+                백엔드 JWT를 사용하는 이중 인증 구조였습니다. 두 인증 상태가
+                동기화되지 않아 한쪽이 만료되면 충돌이 발생했습니다.
+              </p>
+              <p>
+                <strong>해결.</strong> Supabase Auth를 완전히 제거하고 FastAPI 자체
+                JWT로 인증을 일원화했습니다. 회원가입·로그인·OAuth 모두 백엔드에서
+                직접 JWT를 발급하는 구조로 전환하여 인증 충돌을 근본적으로 해결했습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="section" id="tech-stack">
+      <h2 class="section-h2"><span class="num">06</span>Tech stack</h2>
+      <table class="spec">
+        <thead>
+          <tr><th>Layer</th><th>Tools</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Backend</td><td class="mono">Python · FastAPI · LangGraph · Supabase</td></tr>
+          <tr><td>Frontend</td><td class="mono">Next.js · TypeScript</td></tr>
+          <tr><td>Infra</td><td class="mono">AWS · Docker · GitHub Actions</td></tr>
+          <tr><td>External APIs</td><td class="mono">OpenAI · Google Gemini · OpenRouter · Judge0 · Azure Translator</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Links -->
+    <section class="section" id="links">
+      <h2 class="section-h2"><span class="num">07</span>Links</h2>
+      <ul class="contact-list">
+        <li><span class="k">Service</span><span class="v"><a href="https://codefill.site/" target="_blank" rel="noopener">codefill.site</a></span></li>
+        <li><span class="k">Repo</span><span class="v"><a href="https://github.com/EHW99/codefill" target="_blank" rel="noopener">github.com/EHW99/codefill</a></span></li>
+      </ul>
+    </section>
+
+    <nav class="page-nav">
+      <a href="index.html">
+        <div class="dir">← Previous</div>
+        <div class="ttl">Overview</div>
+      </a>
+      <a href="meetingmap.html" class="right">
+        <div class="dir">Next →</div>
+        <div class="ttl">MeetingMap</div>
+      </a>
+    </nav>
+  </main>
+
+  <aside class="rail">
+    <div class="rail-title">On this page</div>
+    <ul class="rail-list" id="rail">
+      <li><a class="rail-link active" href="#overview">Overview</a></li>
+      <li><a class="rail-link" href="#architecture">Architecture</a></li>
+      <li><a class="rail-link" href="#features">Features</a></li>
+      <li><a class="rail-link" href="#responsibilities">Responsibilities</a></li>
+      <li><a class="rail-link" href="#troubleshooting">Troubleshooting</a></li>
+      <li><a class="rail-link" href="#tech-stack">Tech stack</a></li>
+      <li><a class="rail-link" href="#links">Links</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<script>
+  (function () {
+    const railLinks = Array.from(document.querySelectorAll('#rail .rail-link'));
+    const targets = railLinks
+      .map(l => document.querySelector(l.getAttribute('href')))
+      .filter(Boolean);
+    if (!targets.length) return;
+
+    const intersecting = new Set();
+
+    const setActive = id => {
+      railLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    };
+
+    const update = () => {
+      if (!intersecting.size) return;
+      const topmost = [...intersecting].sort(
+        (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
+      )[0];
+      setActive(topmost.id);
+    };
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) intersecting.add(e.target);
+        else intersecting.delete(e.target);
+      });
+      update();
+    }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
+
+    targets.forEach(t => io.observe(t));
+  })();
+</script>
+</body>
+</html>
