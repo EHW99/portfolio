@@ -48,6 +48,7 @@
       <div class="sb-section-title">Projects</div>
       <ul class="sb-list">
         <li><a class="sb-link" href="codefill.html"><span class="dot"></span>CodeFill</a></li>
+        <li><a class="sb-link" href="satiachat.html"><span class="dot"></span>SatiaChat</a></li>
         <li><a class="sb-link active" href="meetingmap.html"><span class="dot"></span>MeetingMap</a></li>
       </ul>
     </div>
@@ -119,24 +120,6 @@
           <span>시스템 아키텍처. React → Spring Boot → MySQL · AWS · 외부 API(Tmap · Google Places · Tour · Kakao Map · OpenAI) 통합.</span>
         </figcaption>
       </figure>
-
-<pre class="block"><span class="c">// Request path</span>
-<span class="k">Client</span>      ──▶  React (SPA)
-                 │
-                 ▼
-<span class="k">API</span>         ──▶  Spring Boot (Java)
-                 │   Spring Security · JWT · @Transactional
-                 ▼
-<span class="k">Services</span>    ──▶  중간지점 계산 · 장소 추천 · AI 일정
-                 │
-                 ├──▶  Kakao API          (지도 · 장소)
-                 ├──▶  Tmap API           (경로 · 길찾기)
-                 ├──▶  Google Places      (장소 메타)
-                 ├──▶  Tour API           (관광지)
-                 └──▶  OpenAI API         (AI 스케줄)
-
-<span class="k">DB</span>          ──▶  MySQL (사용자 · 게시판 · 그룹 · 친구)
-<span class="k">Storage</span>     ──▶  AWS S3 (이미지)</pre>
 
       <table class="spec">
         <thead>

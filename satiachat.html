@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SatiaChat · 어현우</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=3" />
+<style>
+.figure { margin: 0 0 14px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.figure img { display: block; width: 100%; height: auto; }
+.figure-caption { display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg); font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
+.figure-caption .label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); flex-shrink: 0; }
+.figure.arch { background: #ffffff; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <aside class="sidebar">
+    <a class="sb-brand" href="index.html">
+      <div class="mark">EH</div>
+      <div class="name">어현우</div>
+    </a>
+    <div class="sb-role">Backend Developer</div>
+
+    <div class="sb-section">
+      <div class="sb-section-title">Contact</div>
+      <ul class="sb-contact">
+        <li>
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:djgusdn0415@gmail.com">djgusdn0415@gmail.com</a></span>
+        </li>
+        <li>
+          <span class="k">Phone</span>
+          <span class="v">010-7245-0414</span>
+        </li>
+        <li>
+          <span class="k">GitHub</span>
+          <span class="v"><a href="https://github.com/EHW99" target="_blank" rel="noopener">github.com/EHW99</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sb-section">
+      <div class="sb-section-title">Projects</div>
+      <ul class="sb-list">
+        <li><a class="sb-link" href="codefill.html"><span class="dot"></span>CodeFill</a></li>
+        <li><a class="sb-link active" href="satiachat.html"><span class="dot"></span>SatiaChat</a></li>
+        <li><a class="sb-link" href="meetingmap.html"><span class="dot"></span>MeetingMap</a></li>
+      </ul>
+    </div>
+
+    <div class="sb-back">
+      <a href="index.html">← Back to main</a>
+    </div>
+  </aside>
+
+  <main class="main">
+<h1 class="page-title">SatiaChat</h1>
+    <p class="page-subtitle">
+      AI 다이어트 코치 + GLP-1 약물 RAG 상담 서비스. 위고비·마운자로 사용자가
+      부작용·복약 시점을 즉시 확인할 수 있도록 식약처 공식 허가사항을 RAG로
+      검색하고, 식단·체중·복약 기록을 컨텍스트로 한 AI 코치(페르소나 3종)를
+      함께 제공합니다.
+    </p>
+    <div class="page-meta">
+      <a href="https://github.com/EHW99/SatiaChat" target="_blank" rel="noopener" style="font-family:var(--font-mono); font-size:12px;">GitHub ↗</a>
+    </div>
+
+    <!-- Overview -->
+    <section class="section" id="overview">
+      <h2 class="section-h2"><span class="num">01</span>Overview</h2>
+      <p class="lead">
+        <strong>"다이어트 약을 처방받았는데, 매번 의사에게 물어볼 수도 없고…"</strong>
+        를 해결하는 서비스입니다. 위고비·마운자로 같은 GLP-1 다이어트 약 사용자가
+        부작용이나 복약 시점을 즉시 확인하기 어렵다는 점에서 출발했습니다.
+      </p>
+      <p class="lead secondary">
+        SatiaChat은 식약처 공식 허가사항을 RAG로 검색해 답변하는 약물 챗봇과,
+        사용자의 식단·체중·복약 기록을 컨텍스트로 사용하는 AI 다이어트
+        코치(캐릭터 페르소나 3종)를 함께 제공합니다.
+      </p>
+
+      <figure class="figure">
+        <img src="assets/satiachat-dashboard.jpg" alt="SatiaChat 대시보드 — 페르소나 코치 + 칼로리/체중/복약 카드" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.01</span>
+          <span>대시보드. 페르소나 코치(냥이/댕댕이/꿀꿀이) + 오늘 칼로리·체중 변화·복약 여부 카드.</span>
+        </figcaption>
+      </figure>
+
+      <div class="facts">
+        <div class="fact">
+          <div class="fact-key">Type</div>
+          <div class="fact-val">Web service · 헬스케어 챗봇</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Timeline</div>
+          <div class="fact-val"><span class="mono">2025.12</span> · 1개월</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Team</div>
+          <div class="fact-val">2인 · Backend 담당</div>
+        </div>
+        <div class="fact">
+          <div class="fact-key">Domain</div>
+          <div class="fact-val">GLP-1 다이어트 · 약물 RAG</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture -->
+    <section class="section" id="architecture">
+      <h2 class="section-h2"><span class="num">02</span>Architecture</h2>
+
+<pre class="block"><span class="c">// Request path</span>
+<span class="k">Client</span>      ──▶  React (Vite, :8080)
+                 │   shadcn/ui · Tailwind · TanStack Query
+                 │
+                 ▼
+<span class="k">API</span>         ──▶  FastAPI 메인 서버 (:8000)
+                 │   JWT 검증 미들웨어 · 의도 분류
+                 ├──▶  /chat        (식단 챗봇)
+                 ├──▶  /summary     (오늘/주/월 집계)
+                 └──▶  /medication  (RAG 프록시)
+                 │
+                 ├──▶  OpenAI GPT-4o-mini  (LLM · Function Calling)
+                 │
+                 ▼
+<span class="k">RAG</span>         ──▶  medication-rag (:8001)
+                 │   LlamaIndex · bge-m3 임베딩
+                 │   위고비 / 마운자로 허가사항 인덱스
+                 │
+                 ▼
+<span class="k">DB</span>          ──▶  Supabase (Auth · PostgreSQL)
+                     RLS · 한식 영양 DB</pre>
+
+      <table class="spec">
+        <thead>
+          <tr><th>Layer</th><th>Stack</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Backend</td><td class="mono">Python · FastAPI</td><td>메인 서버 + RAG 서버 분리 (8000/8001)</td></tr>
+          <tr><td>RAG</td><td class="mono">LlamaIndex · bge-m3</td><td>식약처 허가사항 벡터 인덱싱.</td></tr>
+          <tr><td>DB</td><td class="mono">Supabase (Postgres)</td><td>Auth · 식단/체중/복약 · RLS.</td></tr>
+          <tr><td>Frontend</td><td class="mono">React · TypeScript · Vite</td><td>shadcn/ui · Tailwind · TanStack Query.</td></tr>
+          <tr><td>External</td><td class="mono">OpenAI · 식약처 nedrug</td><td>GPT-4o-mini · 약물 허가사항 다운로드.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <h2 class="section-h2"><span class="num">03</span>Features</h2>
+
+      <figure class="figure">
+        <img src="assets/satiachat-medication-rag.jpg" alt="약물 RAG 챗봇 화면" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.02</span>
+          <span>GLP-1 약물 RAG 챗봇. 식약처 공식 허가사항(위고비·마운자로) 기반 답변 + 출처 표기.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="assets/satiachat-mypage.jpg" alt="MyPage — 사용자 정보·체중·복약 관리" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.03</span>
+          <span>MyPage. 체중 추이 차트, 복약 캘린더, 페르소나 변경, 약 관리.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="assets/satiachat-board.jpg" alt="커뮤니티 게시판" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.04</span>
+          <span>커뮤니티 게시판. QnA · 자유 · 정보 3개 탭 + 좋아요 / 댓글.</span>
+        </figcaption>
+      </figure>
+
+      <dl class="dl">
+        <div class="dl-row">
+          <dt class="dl-key">AI 페르소나 코치</dt>
+          <dd class="dl-val">
+            3종 캐릭터(냥이 — 쿨/팩트, 댕댕이 — 따뜻/응원, 꿀꿀이 — 엄격/직설)의
+            어미·이모지·톤이 시스템 프롬프트에 일관 적용되어 사용자 retention을
+            강화합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">자연어 식단 자동 기록</dt>
+          <dd class="dl-val">
+            "치킨 먹었어" 한 마디로 OpenAI Function Calling이 음식·칼로리·매크로를
+            추출해 DB에 INSERT 합니다. 6가지 의도(log/query/stats/modify/analyze/chat)를
+            사전 분류해 비용·지연을 최적화했습니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">GLP-1 약물 RAG 상담</dt>
+          <dd class="dl-val">
+            식약처 공식 허가사항(위고비·마운자로) 6개 문서를 LlamaIndex로 인덱싱.
+            bge-m3 다국어 임베딩으로 한국어 질의에 대해 top-4 청크 검색 후
+            GPT-4o-mini가 출처와 함께 답변합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">대시보드</dt>
+          <dd class="dl-val">
+            오늘 칼로리, 체중 변화, 복약 여부를 일·주·월 단위로 집계해 보여줍니다.
+            위고비·마운자로처럼 주 1회 복용하는 약은 지정한 요일에만 알림이 표시됩니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">AI 주간 인사이트</dt>
+          <dd class="dl-val">
+            "분석 받기"를 누르면 코치가 최근 7일치 식단·체중·복약 데이터를 종합 분석해
+            맞춤 조언 리포트를 생성합니다.
+          </dd>
+        </div>
+        <div class="dl-row">
+          <dt class="dl-key">커뮤니티 게시판</dt>
+          <dd class="dl-val">
+            QnA · 자유 · 정보 3개 탭의 게시판이며, 좋아요/싫어요와 댓글 기능을
+            제공합니다.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- Responsibilities -->
+    <section class="section" id="responsibilities">
+      <h2 class="section-h2"><span class="num">04</span>Responsibilities</h2>
+      <ul style="list-style:none; padding-left:0;">
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>AI 챗봇 시스템 (식단 코치)</strong> — 6가지 의도 AI 분류, 의도별 프롬프트 빌더, cold/bright/strict 페르소나 시스템 프롬프트, OpenAI Function Calling 도구 4종(log/get/update/delete).</span>
+        </li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>약물 RAG 시스템</strong> — 식약처 의약품안전나라(nedrug) 허가사항 문서 다운로드/텍스트 변환, LlamaIndex 벡터 인덱스 구축, bge-m3 임베딩 적용.</span>
+        </li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>데이터 집계 / 인사이트</strong> — 일·주·월 칼로리/체중/복약 집계 엔드포인트, 복약 순응률 계산(주 단위 약 종류별 가중치), AI 주간 인사이트(7일치 종합 분석).</span>
+        </li>
+        <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>API · 인증</strong> — FastAPI 라우터(chat / medication / summary), Supabase JWT(HS256) 검증 미들웨어, 에러 핸들링 / API 응답 표준화 / 로깅.</span>
+        </li>
+        <li style="padding:8px 0; display:grid; grid-template-columns:24px 1fr; gap:10px;">
+          <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
+          <span><strong>프론트엔드 / UX</strong> — 11개 페이지(대시보드 · MyPage · 약 관리 · 커뮤니티 · 설정 등), 온보딩 5단계 + 페르소나 선택, 챗 패널(모바일 플로팅 + 데스크탑 사이드바), 주간/월간 차트·캘린더.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Troubleshooting -->
+    <section class="section" id="troubleshooting">
+      <h2 class="section-h2"><span class="num">05</span>Troubleshooting</h2>
+
+      <div class="ts">
+
+        <div class="ts-item" id="01">
+          <div class="ts-anchor">#01</div>
+          <div>
+            <div class="ts-title">AI 챗봇 토큰 사용량 과다 — 단일 호출 구조의 한계</div>
+            <div class="ts-body">
+              <p>
+                <strong>상황.</strong> 하나의 챗봇 호출 안에 키워드 매칭, 상황 감지,
+                페르소나 응답 로직이 모두 포함되어 있어 매 요청마다 토큰 사용량이
+                많았습니다. 키워드 패턴 기반 의도 분류 코드가 800줄을 넘어
+                유지보수도 어려웠습니다.
+              </p>
+              <p>
+                <strong>원인.</strong> 의도 분류, 상황 감지, 페르소나 응답이 한
+                함수 안에 묶여 있어 사용자가 단순 인사를 보내도 식단 컨텍스트와
+                페르소나 분기가 모두 실행되었습니다. 의도가 추가될 때마다 키워드
+                패턴을 늘려야 해서 코드가 계속 커졌습니다.
+              </p>
+              <p>
+                <strong>해결.</strong> 두 단계로 분리했습니다. 1단계는 AI가
+                의도(<code class="inline">log/query/modify/analyze/chat</code>)를
+                약 100토큰으로 분류하고, 2단계는 분류된 의도에 맞는 프롬프트 파일만
+                호출하도록 했습니다. 결과적으로 챗봇 관련 코드량이 절반 가까이
+                줄었고, 호출 한 번당 토큰 사용량도 큰 폭으로 감소했습니다(의도별
+                프롬프트만 보내므로).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ts-item" id="02">
+          <div class="ts-anchor">#02</div>
+          <div>
+            <div class="ts-title">약물 RAG — 매 요청마다 불필요한 벡터 검색 호출</div>
+            <div class="ts-body">
+              <p>
+                <strong>상황.</strong> 약물 RAG 챗봇은 사용자의 모든 질문에 대해
+                벡터 검색을 실행했습니다. "안녕" 같은 인사나 "이번 주 복용률
+                알려줘" 같은 통계 질문에도 RAG가 호출되어 임베딩·벡터 검색 비용이
+                불필요하게 발생했습니다.
+              </p>
+              <p>
+                <strong>원인.</strong> RAG API의 <code class="inline">use_rag</code>
+                옵션이 항상 <code class="inline">true</code>로 고정되어 있었고,
+                클라이언트에서 의도에 따라 분기를 걸 수단이 없었습니다. 약 정보가
+                필요한 질문과 그렇지 않은 질문이 동일하게 처리되었습니다.
+              </p>
+              <p>
+                <strong>해결.</strong> 식단 챗봇과 동일한 2단계 구조를 적용했습니다.
+                4가지 의도(<code class="inline">medication_info / analysis / stats / chat</code>) 중
+                약 정보가 필요한 <code class="inline">medication_info</code>와
+                <code class="inline">analysis</code>에서만 RAG를 호출하고,
+                <code class="inline">stats</code>와 <code class="inline">chat</code>은
+                RAG 없이 DB 쿼리/일반 응답으로 처리했습니다. 클라이언트가
+                <code class="inline">use_rag</code> 파라미터로 직접 토글할 수 있도록
+                RAG API도 수정했습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tech stack -->
+    <section class="section" id="tech-stack">
+      <h2 class="section-h2"><span class="num">06</span>Tech stack</h2>
+      <table class="spec">
+        <thead>
+          <tr><th>Layer</th><th>Tools</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Backend</td><td class="mono">Python · FastAPI · LlamaIndex · Supabase</td></tr>
+          <tr><td>Frontend</td><td class="mono">React · TypeScript · Vite</td></tr>
+          <tr><td>External APIs</td><td class="mono">OpenAI · 식약처 nedrug API</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Links -->
+    <section class="section" id="links">
+      <h2 class="section-h2"><span class="num">07</span>Links</h2>
+      <ul class="contact-list">
+        <li><span class="k">Repo</span><span class="v"><a href="https://github.com/EHW99/SatiaChat" target="_blank" rel="noopener">github.com/EHW99/SatiaChat</a></span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <aside class="rail">
+    <div class="rail-title">On this page</div>
+    <ul class="rail-list" id="rail">
+      <li><a class="rail-link active" href="#overview">Overview</a></li>
+      <li><a class="rail-link" href="#architecture">Architecture</a></li>
+      <li><a class="rail-link" href="#features">Features</a></li>
+      <li><a class="rail-link" href="#responsibilities">Responsibilities</a></li>
+      <li><a class="rail-link" href="#troubleshooting">Troubleshooting</a></li>
+      <li><a class="rail-link" href="#tech-stack">Tech stack</a></li>
+      <li><a class="rail-link" href="#links">Links</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<script>
+  (function () {
+    const railLinks = Array.from(document.querySelectorAll('#rail .rail-link'));
+    const targets = railLinks
+      .map(l => document.querySelector(l.getAttribute('href')))
+      .filter(Boolean);
+    if (!targets.length) return;
+
+    const intersecting = new Set();
+
+    const setActive = id => {
+      railLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+    };
+
+    const update = () => {
+      if (!intersecting.size) return;
+      const topmost = [...intersecting].sort(
+        (a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top
+      )[0];
+      setActive(topmost.id);
+    };
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) intersecting.add(e.target);
+        else intersecting.delete(e.target);
+      });
+      update();
+    }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
+
+    targets.forEach(t => io.observe(t));
+  })();
+</script>
+</body>
+</html>

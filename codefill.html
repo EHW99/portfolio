@@ -48,6 +48,7 @@
       <div class="sb-section-title">Projects</div>
       <ul class="sb-list">
         <li><a class="sb-link active" href="codefill.html"><span class="dot"></span>CodeFill</a></li>
+        <li><a class="sb-link" href="satiachat.html"><span class="dot"></span>SatiaChat</a></li>
         <li><a class="sb-link" href="meetingmap.html"><span class="dot"></span>MeetingMap</a></li>
       </ul>
     </div>
@@ -124,23 +125,6 @@
           <span>시스템 아키텍처. Next.js → FastAPI(Routers / LangGraph / Services) → OpenRouter LLM · Supabase(pgvector) · 외부 API(Judge0 · Azure Translator · LangSmith · GA4).</span>
         </figcaption>
       </figure>
-
-<pre class="block"><span class="c">// Request path</span>
-<span class="k">Client</span>     ──▶  Next.js (TypeScript, SSR)
-                │
-                ▼
-<span class="k">API</span>        ──▶  FastAPI (Python)
-                │   JWT auth · OAuth router · 의도 분류
-                ▼
-<span class="k">Services</span>   ──▶  LangGraph · Judge0 · BKT/ELO 분석
-                │
-                ├──▶  OpenAI / Gemini / OpenRouter   (LLM)
-                ├──▶  Judge0 (self-hosted)            (코드 채점)
-                ├──▶  Azure Translator                (번역)
-                └──▶  Supabase (Postgres)             (DB)
-
-<span class="c">// Deploy</span>
-GitHub Actions ──▶ Docker ──▶ AWS EC2 / ECR</pre>
 
       <table class="spec">
         <thead>
