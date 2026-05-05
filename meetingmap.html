@@ -14,64 +14,57 @@
 .figure-caption { display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg); font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
 .figure-caption .label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); flex-shrink: 0; }
 .figure.arch { background: #ffffff; }
-.figure.arch img { padding: 24px; box-sizing: border-box; }
 </style>
 </head>
 <body>
 <div class="shell">
 
   <aside class="sidebar">
-    <div class="sb-brand">
+    <a class="sb-brand" href="index.html">
       <div class="mark">EH</div>
       <div class="name">어현우</div>
-      <div class="ver">v2026.4</div>
-    </div>
+    </a>
+    <div class="sb-role">Backend Developer</div>
 
     <div class="sb-section">
-      <div class="sb-section-title">Getting started</div>
-      <ul class="sb-list">
-        <li><a class="sb-link" href="index.html#overview"><span class="dot"></span>Overview</a></li>
-        <li><a class="sb-link" href="index.html#background"><span class="dot"></span>Background</a></li>
-        <li><a class="sb-link" href="index.html#skills"><span class="dot"></span>Skills</a></li>
+      <div class="sb-section-title">Contact</div>
+      <ul class="sb-contact">
+        <li>
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:djgusdn0415@gmail.com">djgusdn0415@gmail.com</a></span>
+        </li>
+        <li>
+          <span class="k">Phone</span>
+          <span class="v">010-7245-0414</span>
+        </li>
+        <li>
+          <span class="k">GitHub</span>
+          <span class="v"><a href="https://github.com/EHW99" target="_blank" rel="noopener">github.com/EHW99</a></span>
+        </li>
       </ul>
     </div>
 
     <div class="sb-section">
       <div class="sb-section-title">Projects</div>
       <ul class="sb-list">
-        <li><a class="sb-link" href="index.html#projects"><span class="dot"></span>Index</a></li>
-        <li><a class="sb-link sub" href="codefill.html">CodeFill</a></li>
-        <li><a class="sb-link sub active" href="meetingmap.html">MeetingMap</a></li>
+        <li><a class="sb-link" href="codefill.html"><span class="dot"></span>CodeFill</a></li>
+        <li><a class="sb-link active" href="meetingmap.html"><span class="dot"></span>MeetingMap</a></li>
       </ul>
     </div>
 
-    <div class="sb-section">
-      <div class="sb-section-title">Reference</div>
-      <ul class="sb-list">
-        <li><a class="sb-link" href="index.html#certifications"><span class="dot"></span>Certifications</a></li>
-        <li><a class="sb-link" href="index.html#contact"><span class="dot"></span>Contact</a></li>
-      </ul>
+    <div class="sb-back">
+      <a href="index.html">← Back to main</a>
     </div>
   </aside>
 
   <main class="main">
-    <nav class="breadcrumb">
-      <a href="index.html">reference</a>
-      <span class="sep">/</span>
-      <a href="index.html#projects">projects</a>
-      <span class="sep">/</span>
-      <span>meetingmap</span>
-    </nav>
-
-    <h1 class="page-title">MeetingMap</h1>
+<h1 class="page-title">MeetingMap</h1>
     <p class="page-subtitle">
       여러 출발지의 중간지점 기반으로 장소 추천부터 일정 생성·공유까지
       한 번에 해결하는 모임 스케줄링 서비스. 한성대학교 캡스톤 디자인
       4인 팀 프로젝트로, 백엔드를 담당했습니다.
     </p>
     <div class="page-meta">
-      <span>Status <span style="color:var(--text-secondary)">archived</span></span>
-      <span class="sep">·</span>
       <a href="https://github.com/EHW99/meeting_map" target="_blank" rel="noopener" style="font-family:var(--font-mono); font-size:12px;">GitHub ↗</a>
     </div>
 
@@ -118,10 +111,6 @@
 
     <section class="section" id="architecture">
       <h2 class="section-h2"><span class="num">02</span>Architecture</h2>
-      <p class="lead secondary">
-        Spring Boot 기반의 단일 백엔드 서버에서 다수의 외부 지도/장소 API를
-        통합합니다.
-      </p>
 
       <figure class="figure arch">
         <img src="assets/meetingmap-architecture.png" alt="MeetingMap 시스템 아키텍처 다이어그램" />
@@ -241,9 +230,6 @@
 
     <section class="section" id="responsibilities">
       <h2 class="section-h2"><span class="num">04</span>Responsibilities</h2>
-      <p class="lead secondary">
-        백엔드 4개 도메인(인증·게시판·그룹·친구)을 담당했습니다.
-      </p>
       <ul style="list-style:none; padding-left:0;">
         <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
           <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
@@ -266,9 +252,6 @@
 
     <section class="section" id="troubleshooting">
       <h2 class="section-h2"><span class="num">05</span>Troubleshooting</h2>
-      <p class="lead secondary">
-        개발 중 마주친 문제와 해결 방식.
-      </p>
 
       <div class="ts">
         <div class="ts-item" id="01">
@@ -342,16 +325,6 @@
       </ul>
     </section>
 
-    <nav class="page-nav">
-      <a href="codefill.html">
-        <div class="dir">← Previous</div>
-        <div class="ttl">CodeFill</div>
-      </a>
-      <a href="index.html" class="right">
-        <div class="dir">Up →</div>
-        <div class="ttl">Overview</div>
-      </a>
-    </nav>
   </main>
 
   <aside class="rail">

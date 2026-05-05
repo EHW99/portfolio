@@ -14,64 +14,57 @@
 .figure-caption { display: flex; align-items: baseline; gap: 10px; padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg); font-size: 12.5px; color: var(--text-secondary); line-height: 1.55; }
 .figure-caption .label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); flex-shrink: 0; }
 .figure.arch { background: #ffffff; }
-.figure.arch img { padding: 24px; box-sizing: border-box; }
 </style>
 </head>
 <body>
 <div class="shell">
 
   <aside class="sidebar">
-    <div class="sb-brand">
+    <a class="sb-brand" href="index.html">
       <div class="mark">EH</div>
       <div class="name">어현우</div>
-      <div class="ver">v2026.4</div>
-    </div>
+    </a>
+    <div class="sb-role">Backend Developer</div>
 
     <div class="sb-section">
-      <div class="sb-section-title">Getting started</div>
-      <ul class="sb-list">
-        <li><a class="sb-link" href="index.html#overview"><span class="dot"></span>Overview</a></li>
-        <li><a class="sb-link" href="index.html#background"><span class="dot"></span>Background</a></li>
-        <li><a class="sb-link" href="index.html#skills"><span class="dot"></span>Skills</a></li>
+      <div class="sb-section-title">Contact</div>
+      <ul class="sb-contact">
+        <li>
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:djgusdn0415@gmail.com">djgusdn0415@gmail.com</a></span>
+        </li>
+        <li>
+          <span class="k">Phone</span>
+          <span class="v">010-7245-0414</span>
+        </li>
+        <li>
+          <span class="k">GitHub</span>
+          <span class="v"><a href="https://github.com/EHW99" target="_blank" rel="noopener">github.com/EHW99</a></span>
+        </li>
       </ul>
     </div>
 
     <div class="sb-section">
       <div class="sb-section-title">Projects</div>
       <ul class="sb-list">
-        <li><a class="sb-link" href="index.html#projects"><span class="dot"></span>Index</a></li>
-        <li><a class="sb-link sub active" href="codefill.html">CodeFill</a></li>
-        <li><a class="sb-link sub" href="meetingmap.html">MeetingMap</a></li>
+        <li><a class="sb-link active" href="codefill.html"><span class="dot"></span>CodeFill</a></li>
+        <li><a class="sb-link" href="meetingmap.html"><span class="dot"></span>MeetingMap</a></li>
       </ul>
     </div>
 
-    <div class="sb-section">
-      <div class="sb-section-title">Reference</div>
-      <ul class="sb-list">
-        <li><a class="sb-link" href="index.html#certifications"><span class="dot"></span>Certifications</a></li>
-        <li><a class="sb-link" href="index.html#contact"><span class="dot"></span>Contact</a></li>
-      </ul>
+    <div class="sb-back">
+      <a href="index.html">← Back to main</a>
     </div>
   </aside>
 
   <main class="main">
-    <nav class="breadcrumb">
-      <a href="index.html">reference</a>
-      <span class="sep">/</span>
-      <a href="index.html#projects">projects</a>
-      <span class="sep">/</span>
-      <span>codefill</span>
-    </nav>
-
-    <h1 class="page-title">CodeFill</h1>
+<h1 class="page-title">CodeFill</h1>
     <p class="page-subtitle">
       AI 튜터의 맞춤 문제 추천과 실시간 풀이 가이드로 코딩테스트의 높은
       진입장벽을 낮추는 학습 플랫폼. 빈칸·퍼즐·대화·구현 4가지 유형으로
       단계적 학습을 지원하고, 농장 게이미피케이션으로 학습 동기를 부여합니다.
     </p>
     <div class="page-meta">
-      <span>Status <span style="color:var(--text-secondary)">live</span></span>
-      <span class="sep">·</span>
       <a href="https://codefill.site/" target="_blank" rel="noopener" class="pill" style="color:var(--accent); text-decoration:none;"><span class="dot"></span>codefill.site</a>
       <span class="sep">·</span>
       <a href="https://github.com/EHW99/codefill" target="_blank" rel="noopener" style="font-family:var(--font-mono); font-size:12px;">GitHub ↗</a>
@@ -123,10 +116,6 @@
     <!-- Architecture -->
     <section class="section" id="architecture">
       <h2 class="section-h2"><span class="num">02</span>Architecture</h2>
-      <p class="lead secondary">
-        FastAPI 백엔드 + Next.js 프론트엔드 + Supabase DB 구조. 외부 API
-        다수를 게이트웨이 레이어에서 통합 호출합니다.
-      </p>
 
       <figure class="figure arch">
         <img src="assets/codefill-architecture.png" alt="CodeFill 시스템 아키텍처 다이어그램" />
@@ -252,10 +241,6 @@ GitHub Actions ──▶ Docker ──▶ AWS EC2 / ECR</pre>
     <!-- Responsibilities -->
     <section class="section" id="responsibilities">
       <h2 class="section-h2"><span class="num">04</span>Responsibilities</h2>
-      <p class="lead secondary">
-        백엔드 개발 전반을 담당했습니다. 인증·채점·게이미피케이션·분석 리포트·관리자
-        도메인을 직접 설계하고 구현했습니다.
-      </p>
       <ul style="list-style:none; padding-left:0;">
         <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
           <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
@@ -287,10 +272,6 @@ GitHub Actions ──▶ Docker ──▶ AWS EC2 / ECR</pre>
     <!-- Troubleshooting -->
     <section class="section" id="troubleshooting">
       <h2 class="section-h2"><span class="num">05</span>Troubleshooting</h2>
-      <p class="lead secondary">
-        실서비스 배포 과정에서 마주친 문제와 해결 방식. 각 항목은 고정
-        앵커를 가집니다.
-      </p>
 
       <div class="ts">
         <div class="ts-item" id="01">
@@ -393,16 +374,6 @@ GitHub Actions ──▶ Docker ──▶ AWS EC2 / ECR</pre>
       </ul>
     </section>
 
-    <nav class="page-nav">
-      <a href="index.html">
-        <div class="dir">← Previous</div>
-        <div class="ttl">Overview</div>
-      </a>
-      <a href="meetingmap.html" class="right">
-        <div class="dir">Next →</div>
-        <div class="ttl">MeetingMap</div>
-      </a>
-    </nav>
   </main>
 
   <aside class="rail">
