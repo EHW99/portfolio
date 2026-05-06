@@ -246,6 +246,23 @@ ul, ol { margin: 0; padding: 0; }
   letter-spacing: -0.025em;
   margin-bottom: 10px;
 }
+.page-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.page-title-row .page-title {
+  margin-bottom: 0;
+}
+.page-title-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: block;
+}
+
 .page-subtitle {
   font-size: 16px;
   color: var(--text-secondary);
@@ -353,6 +370,41 @@ ul, ol { margin: 0; padding: 0; }
   background: #fbfcfd;
   text-decoration: none;
 }
+
+/* Title containing icon mark + logo image/text */
+.callout-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.callout-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  flex-shrink: 0;
+  display: block;
+}
+.callout-mark-lg {
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+}
+.callout-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+.callout-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.satia-mint { color: #7FE7C4; }
+.satia-blue { color: #577DFF; }
+.mm-orange { color: #FF6B35; }
+
+
 .callout-head {
   display: flex;
   align-items: center;

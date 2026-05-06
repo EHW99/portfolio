@@ -59,7 +59,10 @@
   </aside>
 
   <main class="main">
-<h1 class="page-title">SatiaChat</h1>
+<div class="page-title-row">
+  <img class="page-title-icon" src="assets/satiachat-icon.svg" alt="" />
+  <h1 class="page-title">SatiaChat</h1>
+</div>
     <p class="page-subtitle">
       AI 다이어트 코치 + GLP-1 약물 RAG 상담 서비스. 위고비·마운자로 사용자가
       부작용·복약 시점을 즉시 확인할 수 있도록 식약처 공식 허가사항을 RAG로
@@ -99,15 +102,15 @@
         </div>
         <div class="fact">
           <div class="fact-key">Timeline</div>
-          <div class="fact-val"><span class="mono">2025.12</span> · 1개월</div>
+          <div class="fact-val"><span class="mono">2025.12</span> · 2주</div>
         </div>
         <div class="fact">
           <div class="fact-key">Team</div>
           <div class="fact-val">2인 · Backend 담당</div>
         </div>
         <div class="fact">
-          <div class="fact-key">Domain</div>
-          <div class="fact-val">GLP-1 다이어트 · 약물 RAG</div>
+          <div class="fact-key">Tooling</div>
+          <div class="fact-val">Claude Code 활용</div>
         </div>
       </div>
     </section>
@@ -116,27 +119,13 @@
     <section class="section" id="architecture">
       <h2 class="section-h2"><span class="num">02</span>Architecture</h2>
 
-<pre class="block"><span class="c">// Request path</span>
-<span class="k">Client</span>      ──▶  React (Vite, :8080)
-                 │   shadcn/ui · Tailwind · TanStack Query
-                 │
-                 ▼
-<span class="k">API</span>         ──▶  FastAPI 메인 서버 (:8000)
-                 │   JWT 검증 미들웨어 · 의도 분류
-                 ├──▶  /chat        (식단 챗봇)
-                 ├──▶  /summary     (오늘/주/월 집계)
-                 └──▶  /medication  (RAG 프록시)
-                 │
-                 ├──▶  OpenAI GPT-4o-mini  (LLM · Function Calling)
-                 │
-                 ▼
-<span class="k">RAG</span>         ──▶  medication-rag (:8001)
-                 │   LlamaIndex · bge-m3 임베딩
-                 │   위고비 / 마운자로 허가사항 인덱스
-                 │
-                 ▼
-<span class="k">DB</span>          ──▶  Supabase (Auth · PostgreSQL)
-                     RLS · 한식 영양 DB</pre>
+      <figure class="figure arch">
+        <img src="assets/satiachat-architecture.png" alt="SatiaChat 시스템 아키텍처 다이어그램" />
+        <figcaption class="figure-caption">
+          <span class="label">fig.02</span>
+          <span>시스템 아키텍처. React → FastAPI(의도 분류 · Function Calling · 데이터 집계) → OpenAI GPT-4o-mini · LlamaIndex(약물 RAG) · Supabase(Auth · PostgreSQL · RLS).</span>
+        </figcaption>
+      </figure>
 
     </section>
 
@@ -149,8 +138,8 @@
         </thead>
         <tbody>
           <tr><td>Backend</td><td class="mono">Python · FastAPI · LlamaIndex · Supabase</td></tr>
-          <tr><td>Frontend</td><td class="mono">React · TypeScript · Vite</td></tr>
-          <tr><td>External APIs</td><td class="mono">OpenAI · 식약처 nedrug API</td></tr>
+          <tr><td>Frontend</td><td class="mono">React · TypeScript</td></tr>
+          <tr><td>External APIs</td><td class="mono">OpenAI</td></tr>
         </tbody>
       </table>
     </section>
@@ -162,7 +151,7 @@
       <figure class="figure">
         <img src="assets/satiachat-medication-rag.jpg" alt="약물 RAG 챗봇 화면" />
         <figcaption class="figure-caption">
-          <span class="label">fig.02</span>
+          <span class="label">fig.03</span>
           <span>GLP-1 약물 RAG 챗봇. 식약처 공식 허가사항(위고비·마운자로) 기반 답변 + 출처 표기.</span>
         </figcaption>
       </figure>
@@ -170,7 +159,7 @@
       <figure class="figure">
         <img src="assets/satiachat-mypage.jpg" alt="MyPage — 사용자 정보·체중·복약 관리" />
         <figcaption class="figure-caption">
-          <span class="label">fig.03</span>
+          <span class="label">fig.04</span>
           <span>MyPage. 체중 추이 차트, 복약 캘린더, 페르소나 변경, 약 관리.</span>
         </figcaption>
       </figure>
@@ -178,7 +167,7 @@
       <figure class="figure">
         <img src="assets/satiachat-board.jpg" alt="커뮤니티 게시판" />
         <figcaption class="figure-caption">
-          <span class="label">fig.04</span>
+          <span class="label">fig.05</span>
           <span>커뮤니티 게시판. QnA · 자유 · 정보 3개 탭 + 좋아요 / 댓글.</span>
         </figcaption>
       </figure>
