@@ -126,23 +126,27 @@
         </figcaption>
       </figure>
 
+    </section>
+
+    <!-- Tech stack -->
+    <section class="section" id="tech-stack">
+      <h2 class="section-h2"><span class="num">03</span>Tech stack</h2>
       <table class="spec">
         <thead>
-          <tr><th>Layer</th><th>Stack</th><th>Notes</th></tr>
+          <tr><th>Layer</th><th>Tools</th></tr>
         </thead>
         <tbody>
-          <tr><td>Backend</td><td class="mono">Python · FastAPI · LangGraph</td><td>JWT 인증, OAuth 3종 통합, AI 튜터 라우팅.</td></tr>
-          <tr><td>DB</td><td class="mono">Supabase (Postgres)</td><td>문제 DB · 사용자 · 게이미피케이션 상태.</td></tr>
-          <tr><td>Frontend</td><td class="mono">Next.js · TypeScript</td><td>SSR · standalone 빌드.</td></tr>
-          <tr><td>Infra</td><td class="mono">AWS · Docker · GitHub Actions</td><td>EC2/ECR 배포 · CI/CD 파이프라인.</td></tr>
-          <tr><td>External</td><td class="mono">OpenAI · Gemini · Judge0 · Azure</td><td>LLM 추론 · 코드 채점 · 번역.</td></tr>
+          <tr><td>Backend</td><td class="mono">Python · FastAPI · LangGraph · Supabase</td></tr>
+          <tr><td>Frontend</td><td class="mono">Next.js · TypeScript</td></tr>
+          <tr><td>Infra</td><td class="mono">AWS · Docker · GitHub Actions</td></tr>
+          <tr><td>External APIs</td><td class="mono">OpenAI · Google Gemini · OpenRouter · Judge0 · Azure Translator</td></tr>
         </tbody>
       </table>
     </section>
 
     <!-- Features -->
     <section class="section" id="features">
-      <h2 class="section-h2"><span class="num">03</span>Features</h2>
+      <h2 class="section-h2"><span class="num">04</span>Features</h2>
 
       <figure class="figure">
         <img src="assets/codefill-chat.png" alt="문제 풀이 화면 — AI 코딩 튜터 채팅" />
@@ -224,7 +228,7 @@
 
     <!-- Responsibilities -->
     <section class="section" id="responsibilities">
-      <h2 class="section-h2"><span class="num">04</span>Responsibilities</h2>
+      <h2 class="section-h2"><span class="num">05</span>Responsibilities</h2>
       <ul style="list-style:none; padding-left:0;">
         <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
           <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
@@ -255,7 +259,7 @@
 
     <!-- Troubleshooting -->
     <section class="section" id="troubleshooting">
-      <h2 class="section-h2"><span class="num">05</span>Troubleshooting</h2>
+      <h2 class="section-h2"><span class="num">06</span>Troubleshooting</h2>
 
       <div class="ts">
         <div class="ts-item" id="01">
@@ -333,22 +337,6 @@
       </div>
     </section>
 
-    <!-- Tech stack -->
-    <section class="section" id="tech-stack">
-      <h2 class="section-h2"><span class="num">06</span>Tech stack</h2>
-      <table class="spec">
-        <thead>
-          <tr><th>Layer</th><th>Tools</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Backend</td><td class="mono">Python · FastAPI · LangGraph · Supabase</td></tr>
-          <tr><td>Frontend</td><td class="mono">Next.js · TypeScript</td></tr>
-          <tr><td>Infra</td><td class="mono">AWS · Docker · GitHub Actions</td></tr>
-          <tr><td>External APIs</td><td class="mono">OpenAI · Google Gemini · OpenRouter · Judge0 · Azure Translator</td></tr>
-        </tbody>
-      </table>
-    </section>
-
     <!-- Links -->
     <section class="section" id="links">
       <h2 class="section-h2"><span class="num">07</span>Links</h2>
@@ -365,10 +353,10 @@
     <ul class="rail-list" id="rail">
       <li><a class="rail-link active" href="#overview">Overview</a></li>
       <li><a class="rail-link" href="#architecture">Architecture</a></li>
+      <li><a class="rail-link" href="#tech-stack">Tech stack</a></li>
       <li><a class="rail-link" href="#features">Features</a></li>
       <li><a class="rail-link" href="#responsibilities">Responsibilities</a></li>
       <li><a class="rail-link" href="#troubleshooting">Troubleshooting</a></li>
-      <li><a class="rail-link" href="#tech-stack">Tech stack</a></li>
       <li><a class="rail-link" href="#links">Links</a></li>
     </ul>
   </aside>
@@ -406,6 +394,37 @@
     }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
 
     targets.forEach(t => io.observe(t));
+  })();
+
+  (function () {
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">&times;</button><img alt="" />';
+    document.body.appendChild(overlay);
+
+    const lbImg = overlay.querySelector('img');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+
+    const open = (src, alt) => {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.figure img').forEach(el => {
+      el.addEventListener('click', () => open(el.src, el.alt));
+    });
+
+    overlay.addEventListener('click', () => close());
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+    });
   })();
 </script>
 </body>

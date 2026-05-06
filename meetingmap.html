@@ -121,22 +121,23 @@
         </figcaption>
       </figure>
 
+    </section>
+
+    <section class="section" id="tech-stack">
+      <h2 class="section-h2"><span class="num">03</span>Tech stack</h2>
       <table class="spec">
-        <thead>
-          <tr><th>Layer</th><th>Stack</th><th>Notes</th></tr>
-        </thead>
+        <thead><tr><th>Layer</th><th>Tools</th></tr></thead>
         <tbody>
-          <tr><td>Backend</td><td class="mono">Java · Spring Boot · Spring Security</td><td>JWT · OAuth · @Transactional 정합성.</td></tr>
-          <tr><td>DB</td><td class="mono">MySQL</td><td>게시판 목록 조회용 View 별도 운영.</td></tr>
-          <tr><td>Frontend</td><td class="mono">React</td><td>SPA · 지도 인터랙션.</td></tr>
-          <tr><td>Infra</td><td class="mono">AWS</td><td>EC2 · S3.</td></tr>
-          <tr><td>External</td><td class="mono">Kakao · Tmap · Google · Tour · OpenAI</td><td>지도 · 장소 · 경로 · AI 일정.</td></tr>
+          <tr><td>Backend</td><td class="mono">Java · Spring Boot · Spring Security · MySQL</td></tr>
+          <tr><td>Frontend</td><td class="mono">React</td></tr>
+          <tr><td>Infra</td><td class="mono">AWS · S3</td></tr>
+          <tr><td>External APIs</td><td class="mono">Kakao · Tmap · Google Places · Tour · OpenAI</td></tr>
         </tbody>
       </table>
     </section>
 
     <section class="section" id="features">
-      <h2 class="section-h2"><span class="num">03</span>Features</h2>
+      <h2 class="section-h2"><span class="num">04</span>Features</h2>
 
       <figure class="figure">
         <img src="assets/meetingmap-map.jpg" alt="지도 화면 — 카테고리별 장소 검색과 경로 표시" />
@@ -212,7 +213,7 @@
     </section>
 
     <section class="section" id="responsibilities">
-      <h2 class="section-h2"><span class="num">04</span>Responsibilities</h2>
+      <h2 class="section-h2"><span class="num">05</span>Responsibilities</h2>
       <ul style="list-style:none; padding-left:0;">
         <li style="padding:8px 0; border-bottom:1px solid var(--border); display:grid; grid-template-columns:24px 1fr; gap:10px;">
           <span style="font-family:var(--font-mono); color:var(--text-muted); font-size:13px;">·</span>
@@ -234,7 +235,7 @@
     </section>
 
     <section class="section" id="troubleshooting">
-      <h2 class="section-h2"><span class="num">05</span>Troubleshooting</h2>
+      <h2 class="section-h2"><span class="num">06</span>Troubleshooting</h2>
 
       <div class="ts">
         <div class="ts-item" id="01">
@@ -288,19 +289,6 @@
       </div>
     </section>
 
-    <section class="section" id="tech-stack">
-      <h2 class="section-h2"><span class="num">06</span>Tech stack</h2>
-      <table class="spec">
-        <thead><tr><th>Layer</th><th>Tools</th></tr></thead>
-        <tbody>
-          <tr><td>Backend</td><td class="mono">Java · Spring Boot · Spring Security · MySQL</td></tr>
-          <tr><td>Frontend</td><td class="mono">React</td></tr>
-          <tr><td>Infra</td><td class="mono">AWS · S3</td></tr>
-          <tr><td>External APIs</td><td class="mono">Kakao · Tmap · Google Places · Tour · OpenAI</td></tr>
-        </tbody>
-      </table>
-    </section>
-
     <section class="section" id="links">
       <h2 class="section-h2"><span class="num">07</span>Links</h2>
       <ul class="contact-list">
@@ -315,10 +303,10 @@
     <ul class="rail-list" id="rail">
       <li><a class="rail-link active" href="#overview">Overview</a></li>
       <li><a class="rail-link" href="#architecture">Architecture</a></li>
+      <li><a class="rail-link" href="#tech-stack">Tech stack</a></li>
       <li><a class="rail-link" href="#features">Features</a></li>
       <li><a class="rail-link" href="#responsibilities">Responsibilities</a></li>
       <li><a class="rail-link" href="#troubleshooting">Troubleshooting</a></li>
-      <li><a class="rail-link" href="#tech-stack">Tech stack</a></li>
       <li><a class="rail-link" href="#links">Links</a></li>
     </ul>
   </aside>
@@ -356,6 +344,37 @@
     }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
 
     targets.forEach(t => io.observe(t));
+  })();
+
+  (function () {
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">&times;</button><img alt="" />';
+    document.body.appendChild(overlay);
+
+    const lbImg = overlay.querySelector('img');
+    const closeBtn = overlay.querySelector('.lightbox-close');
+
+    const open = (src, alt) => {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('.figure img').forEach(el => {
+      el.addEventListener('click', () => open(el.src, el.alt));
+    });
+
+    overlay.addEventListener('click', () => close());
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) close();
+    });
   })();
 </script>
 </body>
