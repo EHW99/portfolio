@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=3" />
+<link rel="stylesheet" href="styles.css?v=4" />
 </head>
 <body>
 <div class="shell">
@@ -60,7 +60,15 @@
 
     <!-- ============ PROJECTS ============ -->
     <section class="section" id="projects">
-      <h2 class="section-h2"><span class="num">01</span>Projects</h2>
+      <div class="section-h2-row">
+        <h2 class="section-h2"><span class="num">01</span>Projects</h2>
+        <button type="button" class="pdf-trigger" id="open-pdf" aria-haspopup="dialog">
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M8 2v9M4 7l4 4 4-4M3 14h10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          PDF
+        </button>
+      </div>
 
       <a class="callout" href="codefill.html">
         <div class="callout-head">
@@ -231,6 +239,33 @@
 
 </div>
 
+<!-- ===================== PDF EXPORT MODAL ===================== -->
+<div class="pdf-modal" id="pdf-modal" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title" aria-hidden="true">
+  <div class="pdf-modal-card" role="document">
+    <h3 class="pdf-modal-title" id="pdf-modal-title">PDF로 내보내기</h3>
+    <p class="pdf-modal-sub">포함할 프로젝트를 선택하세요. 인쇄 대화상자에서 <strong>PDF로 저장</strong>을 선택하면 됩니다.</p>
+    <div class="pdf-checkbox-list">
+      <label class="pdf-check">
+        <input type="checkbox" value="codefill" checked />
+        <span>CodeFill</span>
+      </label>
+      <label class="pdf-check">
+        <input type="checkbox" value="satiachat" checked />
+        <span>SatiaChat</span>
+      </label>
+      <label class="pdf-check">
+        <input type="checkbox" value="meetingmap" checked />
+        <span>MeetingMap</span>
+      </label>
+    </div>
+    <div class="pdf-modal-note">팁 — 인쇄 대화상자에서 <em>배경 그래픽</em>을 켜면 색상이 그대로 나와요.</div>
+    <div class="pdf-modal-actions">
+      <button type="button" class="pdf-btn secondary" id="pdf-cancel">Cancel</button>
+      <button type="button" class="pdf-btn primary" id="pdf-go">Download</button>
+    </div>
+  </div>
+</div>
+
 <script>
   (function () {
     const railLinks = Array.from(document.querySelectorAll('#rail .rail-link'));
@@ -264,6 +299,175 @@
     }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 });
 
     targets.forEach(t => io.observe(t));
+  })();
+
+  // ============== PDF EXPORT ==============
+  (function () {
+    const TITLES = {
+      codefill: 'CodeFill',
+      satiachat: 'SatiaChat',
+      meetingmap: 'MeetingMap'
+    };
+
+    const trigger = document.getElementById('open-pdf');
+    const modal = document.getElementById('pdf-modal');
+    const cancelBtn = document.getElementById('pdf-cancel');
+    const goBtn = document.getElementById('pdf-go');
+    if (!trigger || !modal) return;
+
+    const openModal = () => {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+    const closeModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    };
+
+    trigger.addEventListener('click', openModal);
+    cancelBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    goBtn.addEventListener('click', async () => {
+      const checks = modal.querySelectorAll('input[type="checkbox"]');
+      const selected = [];
+      checks.forEach(c => {
+        if (c.checked) selected.push(c.value);
+      });
+      if (selected.length === 0) {
+        alert('하나 이상의 프로젝트를 선택하세요.');
+        return;
+      }
+      goBtn.disabled = true;
+      const original = goBtn.textContent;
+      goBtn.textContent = 'Preparing…';
+      try {
+        await buildAndPrint(selected);
+      } catch (err) {
+        console.error(err);
+        alert('PDF 준비 중 오류가 발생했습니다. 콘솔을 확인해주세요.');
+      } finally {
+        goBtn.disabled = false;
+        goBtn.textContent = original;
+        closeModal();
+      }
+    });
+
+    async function buildAndPrint(keys) {
+      const docs = {};
+      for (const key of keys) {
+        const r = await fetch(`${key}.html`, { cache: 'no-cache' });
+        if (!r.ok) throw new Error(`Fetch ${key}.html failed: ${r.status}`);
+        const html = await r.text();
+        docs[key] = new DOMParser().parseFromString(html, 'text/html');
+      }
+
+      const baseHref = location.href.replace(/[^/]+$/, '');
+
+      const coverHtml = `
+        <section class="pdf-cover">
+          <div class="pdf-cover-inner">
+            <div class="pdf-cover-eyebrow">Portfolio · 2026</div>
+            <h1 class="pdf-cover-name">어현우</h1>
+            <p class="pdf-cover-role">Backend Developer</p>
+            <ul class="pdf-cover-meta">
+              <li><span class="k">Email</span><span class="v">djgusdn0415@gmail.com</span></li>
+              <li><span class="k">Phone</span><span class="v">010-7245-0414</span></li>
+              <li><span class="k">GitHub</span><span class="v">github.com/EHW99</span></li>
+            </ul>
+            <div class="pdf-toc">
+              <div class="pdf-toc-title">Contents</div>
+              <ol>
+                ${keys.map(k => `<li>${TITLES[k]}</li>`).join('')}
+              </ol>
+            </div>
+          </div>
+        </section>
+      `;
+
+      const projectsHtml = keys.map(key => {
+        const main = docs[key].querySelector('main.main');
+        if (!main) return '';
+        const clone = main.cloneNode(true);
+        clone.querySelectorAll('script').forEach(s => s.remove());
+        // Strip page-meta link bar (URLs reappear via @media print's a[href]:after)
+        return `<section class="pdf-project" data-project="${key}">${clone.innerHTML}</section>`;
+      }).join('');
+
+      const fullHtml = `<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<base href="${baseHref}" />
+<title>어현우 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css?v=4" />
+</head>
+<body class="pdf-mode">
+${coverHtml}
+${projectsHtml}
+</body>
+</html>`;
+
+      return new Promise((resolve) => {
+        const old = document.getElementById('pdf-frame');
+        if (old) old.remove();
+        const iframe = document.createElement('iframe');
+        iframe.id = 'pdf-frame';
+        iframe.setAttribute('aria-hidden', 'true');
+        iframe.style.cssText = 'position:fixed;left:-99999px;top:0;width:794px;height:1123px;border:0;visibility:hidden;';
+        document.body.appendChild(iframe);
+
+        const cdoc = iframe.contentDocument;
+        cdoc.open();
+        cdoc.write(fullHtml);
+        cdoc.close();
+
+        const waitAll = () => {
+          const fontsReady = (cdoc.fonts && cdoc.fonts.ready) ? cdoc.fonts.ready : Promise.resolve();
+          const imgs = Array.from(cdoc.images);
+          const imgsReady = Promise.all(imgs.map(img => {
+            if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+            return new Promise(res => {
+              const done = () => res();
+              img.addEventListener('load', done, { once: true });
+              img.addEventListener('error', done, { once: true });
+            });
+          }));
+          return Promise.all([fontsReady, imgsReady]);
+        };
+
+        const fire = () => {
+          waitAll().then(() => {
+            // Allow layout to settle after fonts/images
+            setTimeout(() => {
+              try {
+                iframe.contentWindow.focus();
+                iframe.contentWindow.print();
+              } catch (e) {
+                console.error(e);
+              }
+              resolve();
+            }, 250);
+          });
+        };
+
+        if (cdoc.readyState === 'complete') {
+          fire();
+        } else {
+          iframe.addEventListener('load', fire, { once: true });
+          // Fallback in case load doesn't fire after document.write
+          setTimeout(fire, 1500);
+        }
+      });
+    }
   })();
 </script>
 </body>
